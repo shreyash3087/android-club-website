@@ -53,21 +53,23 @@ function Gallery() {
                     </span>
                 </h2>
                 <br />
-                <br />
+
             </div>
-            <div className='text-center align-middle'>
-                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2">
+            <div class="container mx-auto p-1">
+                <div className="text-center flex flex-wrap justify-center items-center">
+                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
                     Events
                 </span>
-                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2">
+                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2whitespace-nowrap">
                     Competitions
                 </span>
-                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2" >
+                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
                     Hackathons
                 </span>
-                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2">
+                <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
                     and much more to come
                 </span>
+                </div>
             </div>
 
 
