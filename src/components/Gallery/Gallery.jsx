@@ -3,8 +3,8 @@ import "./Gallery.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Gallery() {
-  const touchStart = useRef(null);
-  const touchEnd = useRef(null);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
   useEffect(() => {
     const next = document.querySelector(".next");
@@ -21,24 +21,24 @@ function Gallery() {
     };
 
     const handleTouchStart = (event) => {
-      touchStart.current = event.touches[0].clientX;
+      touchStartX.current = event.touches[0].clientX;
     };
 
     const handleTouchMove = (event) => {
-      touchEnd.current = event.touches[0].clientX;
+      touchEndX.current = event.touches[0].clientX;
     };
 
     const handleTouchEnd = () => {
-      if (touchStart.current - touchEnd.current > 50) {
-        handleNextClick();
+      if (touchStartX.current && touchEndX.current) {
+        if (touchStartX.current - touchEndX.current > 50) {
+          handleNextClick();
+        } else if (touchStartX.current - touchEndX.current < -50) {
+          handlePrevClick();
+        }
       }
 
-      if (touchStart.current - touchEnd.current < -50) {
-        handlePrevClick();
-      }
-
-      touchStart.current = null;
-      touchEnd.current = null;
+      touchStartX.current = null;
+      touchEndX.current = null;
     };
 
     next.addEventListener("click", handleNextClick);
@@ -126,4 +126,3 @@ function Gallery() {
 }
 
 export default Gallery;
-

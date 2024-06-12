@@ -38,7 +38,6 @@
 }
 .poster {
   width: 400px;
-  height: 500px;
 }
 .poster img {
   height: 100%;
@@ -85,5 +84,13 @@
 @media only screen and (max-width: 900px) {
   .content {
     width: 100%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .event_details_container {
+    padding: 2rem 0rem;
+  }
+  .content {
+    padding: 2rem 0rem;
   }
 }
