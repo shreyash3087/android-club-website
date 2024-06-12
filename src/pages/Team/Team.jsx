@@ -1,251 +1,103 @@
-import React from "react";
-import MemberCard from "../../components/Member-Card/MemberCard";
+import React, { useState, useEffect } from "react";
+import Department from '../../components/Department/Department';
+import "./team.css";
+import { departments as department } from './teamData';
+import { Link } from 'react-scroll';
+import { motion } from 'framer-motion';
+
+
+// things to do : declutter make responsive and then push the code and then add new animations
 
 const Team = () => {
-  return <div>
+  const [activeDepartment, setActiveDepartment] = useState('');
+  const [displayedText, setDisplayedText] = useState('');
+  const text = "MEET THE TEAM.";
+
+  useEffect(() => {
+    let currentText = '';
+    let index = 0;
+    const interval = setInterval(() => {
+      currentText += text[index];
+      setDisplayedText(currentText);
+      index++;
+      if (index === text.length) {
+        clearInterval(interval);
+      }
+    }, 100); // Adjust typing speed here
+    return () => clearInterval(interval);
+  }, [text]);
+
+  const icon_departments = [
+    { name: "Android Team", image: "/TeamPage_Assets/android.png" },
+    { name: "SDC", image: "/TeamPage_Assets/sdc.png" },
+    { name: "Research & Development", image: "/TeamPage_Assets/sdc.png" },
+    { name: "PR & Outreach", image: "/TeamPage_Assets/pr_and_outreach.png" },
+    { name: "Event Management Team", image: "/TeamPage_Assets/evm.png" },
+    { name: "Finance", image: "/TeamPage_Assets/finance.png" },
+    { name: "UI/UX", image: "/TeamPage_Assets/sdc.png" },
+    { name: "Content Team", image: "/TeamPage_Assets/content.png" },
+    { name: "Design Team", image: "/TeamPage_Assets/design.png" },
+    { name: "Media Team", image: "/TeamPage_Assets/media.png" }
+  ];
+
+  const handleNavClick = (departmentName) => {
+    setActiveDepartment(departmentName);
+  };
+
+  return (
     <>
       <main>
-        <div className='team-bg h-96 bg-black bg-cover bg-center flex flex-col items-start justify-end '>
-          <div className='text-white pl-44 font-bold  text-6xl '>
-            MEET
-          </div>
-          <div
-            className='h-1/4 flex pl-44 w-full bg-indigo-950 bg-opacity-50 '>
-            <div className='text-6xl  pt-0 font-bold text-green-500'>
-              THE TEAM
-            </div>
-          </div>
+        <div
+          className="h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-start "
+          style={{ backgroundImage: 'url("/TeamPage_Assets/main_bg.png")' }}
+        >
+          <motion.h1
+            initial={{ width: 0 }}
+            animate={{ width: '100%' }}
+            transition={{ duration: displayedText.length * 0.2 }}
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold ml-4 sm:ml-6 md:ml-8 lg:ml-11 inline-block whitespace-nowrap overflow-hidden"
+          >
+            {displayedText}
+            <span className="animate-blink">|</span>
+          </motion.h1>
         </div>
-      </main>
-      <section>
-        <div className='text-center p-10 split-bg '>
-          <h2 className='text-4xl  font-semibold  pb-5'>
-            Great work requires great people, and we think ours are some of the best
-          </h2>
-          <p className=' text-xl '>
-            Welcome to the Android Club! We are a group of passionate developers, designers, and enthusiasts dedicated to exploring and innovating within the Android ecosystem.
-            Our diverse team brings together a wealth of experience and a shared commitment to pushing the boundaries of mobile technology.
-          </p>
-          <section id='admin'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                ADMIN
-              </h1>
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              
-            </div>
-          </section>
-          <section id='executive board'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                Executive Board
-              </h1>
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='android'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                Android
-              </h1>
-              <MemberCard />
-              <MemberCard />
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='ui/ux'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                UI/UX
-              </h1>
-              <MemberCard />
-              <MemberCard />
-                  
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-             
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='sdc'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                SDC
-              </h1>
-              <MemberCard />
-              <MemberCard />          
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='rnd'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                RESEARCH AND DEVELOPMENT
-              </h1>
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />         
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='fnd'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                FINANCE AND DOCUMENTATION
-              </h1>
-              <MemberCard />
-              <MemberCard />
-                     
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='evm'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                EVENT MANAGEMENT
-              </h1>
-              <MemberCard />
-              <MemberCard />            
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-             
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='pr'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                PR AND OUTREACH
-              </h1>
-              <MemberCard />
-              <MemberCard />           
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='con'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                CONTENT
-              </h1>
-              <MemberCard />
-              <MemberCard />       
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='design'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                DESIGN
-              </h1>
-              <MemberCard />
-              <MemberCard />            
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-            </div>
-          </section>
-          <hr className="border-t-4 rounded-md mt-10 border-black" />
-          <section id='media'>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-              <h1 className='text-2xl font-semibold '>
-                MEDIA
-              </h1>
-              <MemberCard />
-              <MemberCard />           
-            </div>
-            <div className=' mt-20 h-fit flex flex-row justify-evenly items-center p-2' >
-            <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-              <MemberCard />
-        
-            </div>
-          </section>
-        </div>
-      </section>
+        <section>
+          <div className="p-2 mb-5 px-2 sm:px-6 md:px-8 lg:px-10 xl:px-12 flex flex-wrap lg:flex-nowrap justify-between items-center dark-green-bg">
+            {icon_departments.map((department, index) => (
+              <Link
+                key={index}
+                className="w-full sm:w-1/2 md:w-1/3 lg:w-auto h-24 p-0 m-2 flex flex-col justify-center items-center hover:scale-110 transition-transform duration-300"
+                to={department.name.toLowerCase().replace(/ /g, '-')}
+                smooth={true}
+                duration={500}
+                onClick={() => handleNavClick(department.name)}
+              >
+                <div
+                  className="p-0 w-14 h-16 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${department.image})` }}
+                ></div>
+                <p className="link-hover text-white leading-none text-center">{department.name}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
+
+        {department.map((department, index) => (
+          <Department
+            key={index}
+            department={department}
+            row={index % 2 !== 0}
+            slideInFromRight={activeDepartment === department.name}
+          />
+        ))}
+
+
+
+      </main>
 
     </>
-  </div>;
+  );
 };
 
 export default Team;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import * as Components from '/Users/adityapoduval/Developer/android-club-website/src/components/Navbar/login_style.js';
+import * as Components from './login_style';
 import Model from 'react-modal';
 
 const Navbar = () => {

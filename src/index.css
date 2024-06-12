@@ -12,14 +12,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.team-bg {
-  background-image: url('C:\Users\abc\Desktop\I THE BEGGINER\android website\android-club-webapp2\public\TeamPage Assets\hero-bg.jpg');
-}
-
-.split-bg {
-  background: linear-gradient(to bottom, #16A34A 4.7%, #15803D 4.7%);
+@layer utilities {
+  .outlined-text {
+    -webkit-text-stroke: 0.2px white; /* Webkit syntax for text outline */
+    color: #182b23; /* Hide the original text */
+  }
 }
