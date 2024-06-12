@@ -1,0 +1,68 @@
+.team-bg {
+    background-image: url('./TeamPage_assets/main_bg.png');
+    background-color: #E6F1E8;
+    /* background-color: pink; */
+    color: #182b23;
+}
+
+.text-color {
+    color: #182b23;
+    background-color: #E6F1E8;
+}
+.dark-green-bg{
+    background-color: #182b23;
+}
+
+.post{
+    color: #E6F1E8;
+}
+
+.fade-green-bg{
+    background: #254336;
+}
+
+.link-hover:hover{
+  color: #39ff14;
+  font-weight: 600;
+
+}
+
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-from-left {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+  
+
+@keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+  }
+  
+ 
+/* responsive */
+
+
+
+
