@@ -49,7 +49,7 @@ function Gallery() {
                 <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide">
                     A Glimpse of{" "}
                     <span className="bg-gradient-to-r from-green-500 to-green-800 text-transparent bg-clip-text">
-                        Android alchemy.
+                        Android alchemy
                     </span>
                 </h2>
                 <br />
