@@ -85,6 +85,8 @@ const HeroSection = () => {
           Your browser does not support the video tag.
         </video>
       </div>
+      <br/>
+      <br/>
     </div>
   );
 };
