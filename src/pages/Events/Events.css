@@ -1,30 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* HERO_SECTION */
-body{
-  width:100%;
+body {
+  width: 100%;
   margin: 0;
   padding: 0;
 }
 .hero_section {
-  height: 100vh;
-  background: linear-gradient(to bottom, #e6f1e8 55%, #275e06 45%);
+  background: linear-gradient(to bottom, #e6f1e8 50%, #254336 50%);
   display: flex;
+  min-height: 500px;
   justify-content: center;
   align-items: center;
+  transition: 0.5s ease-in-out;
 }
 .title {
-  font-family: "Fredoka", sans-serif;
   padding: 2rem;
-  font-size: 4rem;
-  font-weight: 800;
-  color: #7ac140;
+  font-size: 3rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #254336;
   align-self: flex-start;
+  transition: 0.5s ease-in-out;
 }
 .main_island {
   position: absolute;
-  width: 65%;
   z-index: 10;
+  width: 65%;
+  transition: 0.5s ease-in-out;
 }
 .main_island img {
   width: 100%;
@@ -32,16 +35,17 @@ body{
 
 .background {
   position: absolute;
-  transform: translateY(-37.5%);
+  transform: translateY(-50%);
 }
+
 .clouds {
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.clouds img {
-  width: 15%;
+.clouds_img {
+  transition: 0.5s ease-in-out;
 }
 .trees {
   width: 100%;
@@ -49,50 +53,177 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-.trees img {
-  width: 20%;
+.trees_img {
+  transition: 0.5s ease-in-out;
 }
 
 /* EVENTS CALENDER */
-
-.events_calender {
-  height: 100vh;
+.num_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #367010;
 }
-.events_calender img {
-  width: 35%;
+@property --event_stat {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
 }
-.calender_content {
-  width: 40%;
+@property --hackathon_stat {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
 }
-.calender_content_title {
+
+.event_stat {
+  animation: counter 1s infinite alternate ease-in-out;
+  counter-reset: event_stat var(--event_stat);
+}
+.hackathon_stat {
+  animation: counter 1s infinite alternate ease-in-out;
+  counter-reset: hackathon_stat var(--hackathon_stat);
+}
+.hackathon_stat::after {
+  content: counter(hackathon_stat);
+}
+.event_stat::after {
+  content: counter(event_stat);
+}
+
+@keyframes counter {
+  from {
+    --event_stat: 0;
+    --hackathon_stat: 0;
+    --participant_stat: 0;
+    --volunteer_stat: 0;
+  }
+  to {
+    --event_stat: 15;
+    --hackathon_stat: 5;
+    --participant_stat: 2000;
+    --volunteer_stat: 100;
+  }
+}
+.events_calendar {
+  min-height:100vh;
+  overflow: hidden;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  background: #e6f1e8;
+}
+
+.events_calendar_main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 2rem;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0rem;
+  background-color: #254336;
+}
+.stat_card {
+  padding: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  transition: 0.5s ease-in-out;
+}
+
+.calendar {
+  width: 60%;
+}
+
+.calendar_content {
+  width: 30%;
+}
+.calendar_content_title {
   text-align: center;
   margin: 2rem;
-  font-family: "Fredoka", sans-serif;
-  font-weight: 800;
-  font-size: 3.5rem;
-  color: white;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  color: #254336;
 }
-.calender_content_desc {
+.calendar_content_desc {
   font-family: "Canva-sans", sans-serif;
-  font-weight: 800;
-  font-size: 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
   text-align: justify;
-  color: white;
+  color: #254336;
 }
 
 /* UPCOMING EVENTS */
 
-.upcoming_events {
+.events {
   height: 100vh;
-  background: #4a6218;
   overflow: hidden;
+  display: flex;
+  background: #e6f1e8;
+}
+.past_events {
+  width: 15%;
+  height: 100%;
+  background: #e6f1e8;
+  position: relative;
+  transition:0.5s;
+}
+.upcoming_events {
+  width: 100%;
+  transition: width 0.5s;
+  background: #254336;
 }
 
+.upcoming_events.swiped {
+  width: 15%;
+}
+
+.upcoming_event_switch_text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.5rem;
+  padding: 2rem;
+  font-weight: 100;
+  color: #ffffff82;
+  line-height: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  cursor:pointer;
+}
+
+
+.past_events.expanded {
+  width: 85%;
+}
+
+.past_event_content{
+  width:100%;
+  height:100%;
+}
+
+.past_event_switch_text {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 1.5rem;
+  padding: 2rem;
+  font-weight: 200;
+  color: #25433682;
+  line-height: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  cursor:pointer;
+}
 .upcoming_events_title {
+  margin-bottom: 1%;
+  height: 19%;
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -100,66 +231,169 @@ body{
   font-size: 3rem;
   font-family: "Lilita One", sans-serif;
   color: white;
+  background: #254336;
 }
+
 .upcoming_events_title img {
-  width: 10%;
+  width: 8rem;
 }
+
 .upcoming_events_content {
+  position: relative;
+  height: 80%;
+  background: #254336;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.upcoming_events_content img {
-  width: 60%;
-}
-
-.phone_content {
-  position: absolute;
-  width: 45%;
-  background: #4a6218;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.phone_content .event {
-  width: 50%;
-}
-
-.phone_content .event_desc {
-  width: 50%;
-  text-align: center;
-  font-size: 2rem;
-  font-family: "Lilita One", sans-serif;
+.upcoming_events_box {
+  width: 40%;
+  margin: 2rem;
+  border-radius: 2rem;
+  background: #e6f1e83e;
+  padding: 2rem;
   color: white;
+  font-family: "Lillita", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 500;
 }
+.upcoming_event_name {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.upcoming_event_desc {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+.upcoming_event_image {
+  width: 22rem;
+  position: relative;
+}
+.upcoming_event_poster {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 85%;
+}
+.phone {
+  width: 100%;
+}
+
 .register_btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
   margin-top: 1rem;
   padding: 0.5rem 0.8rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: "Lilita One", sans-serif;
-  color: #275e06;
+  color: #254336;
   background: white;
   border-radius: 2rem;
+  transition: 0.2s;
+}
+.no_event_text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  color: #254336;
+  font-size: 1.3rem;
+}
+.register_btn:hover{
+  background:#254336;
+  color:white;
+}
+.swipe_right{
+  position: absolute;
+  cursor:pointer;
+  bottom: 10px;
+  right: 10px;
+  width:50px;
+  height:50px;
+}
+.swipe_left{
+  position: absolute;
+  cursor:pointer;
+  transform: rotate(180deg);
+  bottom: 10px;
+  left: 10px;
+  width:50px;
+  height:50px;
+}
+.events_highlights{
+  position: relative;
+  width:100%;
+  height:600px;
+  background: #e6f1e8;
 }
 
-/* PAST EVENTS */
-
-.past_events {
-  height: 100vh;
+.events_highlights_title {
+  height: 19%;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #367010;
-}
-.past_events_box{
-display: flex;
-}
-.demoevent{
-  width: 80%;
+  font-size: 3rem;
+  font-family: "Lilita One", sans-serif;
+  background: #254336;
+  color:#e6f1e8;
 }
 
-.past_event_container{
-  margin:2rem;
+@media only screen and (max-width: 1024px) {
+  .stat_card {
+    font-size: 1.1rem;
+  }
+  .events_calendar_main {
+    flex-direction: column;
+  }
+  .calendar {
+    width: 87%;
+  }
+  .calendar_content {
+    width: 80%;
+    background-color: #ffffff6b;
+    padding: 2rem;
+  }
+  .calendar_content_title {
+    margin: 0rem;
+  }
 }
+@media only screen and (max-width:900px){
+  .past_events {
+    width: 0%;
+  }
+  .upcoming_events.swiped {
+    width: 0%;
+  }
+  .past_events.expanded {
+    width: 100%;
+  }
+  .upcoming_events_box{
+    display: none;
+  }
+  .upcoming_events_title{
+    font-size: 2.5rem;
+  }
+  .upcoming_events_title img{
+    width:6rem;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .stat_card {
+    flex-wrap: wrap;
+  }
+  .upcoming_events_title{
+    font-size: 2rem;
+  }
+  .upcoming_events_title img{
+    width:5rem;
+  }
+}
+
