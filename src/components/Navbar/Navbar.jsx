@@ -3,12 +3,11 @@ import { Menu, X } from "lucide-react";
 import logo1 from "/src/assets/logo1.png";
 import { navItems } from "/src/constants";
 import React, { useState } from "react";
-import "./Navbar.css";
+
 import { Link } from "react-router-dom";
 
-import * as Components from "./login_style";
 
-import Model from "react-modal";
+import Login_popup from "../LoginPopUp/Login_popup";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -38,15 +37,7 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="hidden justify-center items-center space-x-12 lg:flex">
-            <a href="#" className="px-3 py-2 rounded-md border">
-              Sign In
-            </a>
-            <a
-              href="#"
-              className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md"
-            >
-              Create an account
-            </a>
+            <Login_popup/>
           </div>
           <div className="flex-col justify-end lg:hidden md:flex">
             <button onClick={toggleNavbar}>
