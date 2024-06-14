@@ -9,9 +9,9 @@ const AdmCard = ({ admin, row }) => {
           <div className="w-1/4 md:w-1/6 bg-[#15281f] post border flex justify-center items-center text-2xl md:text-3xl lg:text-4xl font-light">
             <div className='-rotate-90'>{admin.role}</div>
           </div>
-          <div className="w-1/2 md:w-3/6 p-6 relative border text-color flex justify-start items-center bg-[#eafbea]">
+          <div className="w-1/2 md:w-3/6 p-6 relative border text-color flex justify-start items-center max-xl:flex-col bg-[#eafbea]">
             <img src={admin.image} className="w-32 md:w-72 h-32 md:h-72 rounded-xl" alt="Logo" />
-            <h1 className="text-5xl font-extrabold px-5 w-full ">
+            <h1 className="text-5xl max-xl:text-3xl font-extrabold px-5 w-full ">
               <span className="text-[#254336]">{admin.name}</span>
             </h1>
           </div>
