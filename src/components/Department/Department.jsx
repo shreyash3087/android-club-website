@@ -15,9 +15,9 @@ const Department = ({ department, slideInFromRight }) => {
           controls.start('visible');
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01 }
     );
-
+    
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
@@ -43,7 +43,7 @@ const Department = ({ department, slideInFromRight }) => {
       animate={controls}
       variants={variants}
     >
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold pb-4">{department && department.name}</h1>
+      <h1 className="text-4xl lg:text-5xl font-bold pt-5 pb-10 text-[#254336]">{department && department.name}</h1>
       {department && department.admins && department.admins.map((person, index) => (
 
         <React.Fragment key={index}>

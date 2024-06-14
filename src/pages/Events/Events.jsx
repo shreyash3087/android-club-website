@@ -54,7 +54,7 @@ function Events() {
   return (
     <div>
       <div className="hero_section">
-        <div className="title">Our Events</div>
+        <div className="event_title">Our Events</div>
         <motion.div
           initial={{ translateY: 100, opacity: 0 }}
           whileInView={{ translateY: 50, opacity: 1 }}

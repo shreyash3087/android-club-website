@@ -156,7 +156,7 @@ export const departments = [
       {
         name: "Anish Bokare",
         role: "Core Member (IOT)",
-        image: "TeamPage_Assets/clubMembers_photos/rnd/Anish Bokare_IoT_R&D core member",
+        image: "TeamPage_Assets/clubMembers_photos/rnd/Anish Bokare_IOT.png",
       },
     ],
   },
@@ -231,7 +231,7 @@ export const departments = [
       {
         name: "Lakshmi Amrutha Duvvuri",
         role: "Lead ",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/evm/LAKSHMI AMRUTHA DUVVURI_LEAD.jpg",
       },
       {
         name: "Adity Chhetri",
@@ -276,7 +276,7 @@ export const departments = [
       {
         name: "Akshat Pandey",
         role: "Core Member",
-        image: "TeamPage_Assets/clubMembers_photos/evm/Akshat pandey evm core member_.webp",
+        image: "TeamPage_Assets/clubMembers_photos/evm/Akshat pandey evm core member_.jpg",
       },
       {
         name: "Dhriti",
@@ -291,7 +291,7 @@ export const departments = [
       {
         name: "Shroddha Chakraborty",
         role: "Lead ",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/finance_/Shroddha.jpg",
       },
       {
         name: "Ashish Anand",
@@ -301,22 +301,22 @@ export const departments = [
       {
         name: "Omkar Babar",
         role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/finance_/omkar.jpg",
       },
       {
         name: "Kataru Heramb Murthy",
         role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/finance_/kataru.jpg",
       },
       {
         name: "Kanak Pravin Sonare",
         role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/finance_/kanak.jpg",
       },
       {
         name: "Nischal Gupta ",
         role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/finance_/nischal.jpg",
       },
     ],
   },
@@ -326,12 +326,12 @@ export const departments = [
       {
         name: "Somil Jain",
         role: "Core Member",
-        image: "android-club-webapp2\public\TeamPage_Assets\clubMembers_photos\design-ui\SOMIL_JAIN_COREMEMBER.jpg",
+        image: "TeamPage_Assets/clubMembers_photos/design-ui/SOMIL_JAIN_COREMEMBER.jpg",
       },
       {
         name: "Apoorva Goyal ",
         role: "Core Member",
-        image: "android-club-webapp2\public\TeamPage_Assets\clubMembers_photos\design-ui\APOORVAGOYAL_POST.jpg",
+        image: "TeamPage_Assets/clubMembers_photos/design-ui/APOORVAGOYAL_POST.jpg",
       },
       {
         name: "Ananth Krishna Rambhatla",
@@ -372,7 +372,7 @@ export const departments = [
       {
         name: "Nischal Gupta ",
         role: "Core Member",
-        image: "TeamPage_Assets/clubMembers_photos/sdc/Lay Sheth 22BCE10475.JPG",
+        image: "TeamPage_Assets/user icon.png",
       },
     ],
   },
@@ -472,7 +472,7 @@ export const departments = [
       {
         name: "Dikshika",
         role: "Core Member",
-        image: "TeamPage_Assets/clubMembers_photos/media/Dikshika_coremember.heic",
+        image: "TeamPage_Assets/clubMembers_photos/media/Dikshika.png",
       },
       {
         name: "Samriddhi Tripath",

@@ -3,10 +3,7 @@ import { Menu, X } from "lucide-react";
 import logo1 from "/src/assets/logo1.png";
 import { navItems } from "/src/constants";
 import React, { useState } from "react";
-import "./Navbar.css";
 import { Link } from "react-router-dom";
-
-import * as Components from "./login_style";
 
 import Model from "react-modal";
 
