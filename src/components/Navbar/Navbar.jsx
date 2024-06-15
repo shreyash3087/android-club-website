@@ -1,24 +1,30 @@
 import { Menu, X } from "lucide-react";
-
 import logo1 from "/src/assets/logo1.png";
 import { navItems } from "/src/constants";
 import React, { useState } from "react";
-
 import { Link } from "react-router-dom";
-
-
 import Login_popup from "../LoginPopUp/Login_popup";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [loginPopupVisible, setLoginPopupVisible] = useState(false);
 
   const toggleNavbar = () => {
+    if (!mobileDrawerOpen) {
+      setLoginPopupVisible(false); 
+    }
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
 
+  const toggleLoginPopup = () => {
+    if (!loginPopupVisible) {
+      setMobileDrawerOpen(false);
+    }
+    setLoginPopupVisible(!loginPopupVisible);
+  };
   return (
     <nav className="sticky top-0 z-50 py-3 border-b backdrop-blur-lg border-neutral-700/80">
-      <div className="container relative px-4 mx-auto lg:text-sm">
+      <div className="relative px-4 mx-auto lg:text-sm">
         <div className="flex justify-between items-center">
           <div className="flex flex-shrink-0 items-center">
             <img className="mr-2 h-10 w-30" src={logo1} alt="Logo" />
@@ -30,14 +36,19 @@ const Navbar = () => {
           <ul className="hidden ml-14 space-x-12 lg:flex">
             {navItems.map((item, index) => (
               <li key={index}>
-                <span className="px-2 py-1 h-6 text-lg font-medium text-gray-500 uppercase rounded-lg hover:bg-neutral-600/50 hover:text-green-400">
+                <span className="px-2 py-1 h-6 text-lg max-xl:px-0 font-medium text-gray-500 uppercase rounded-lg hover:bg-neutral-600/50 hover:text-green-400">
                   <a href={item.href}>{item.label}</a>
                 </span>
               </li>
             ))}
           </ul>
-          <div className="hidden justify-center items-center space-x-12 lg:flex">
-            <Login_popup/>
+          <div className="hidden justify-center items-center space-x-12 max-xl:space-x-4 lg:flex">
+            <button onClick={toggleLoginPopup} className="px-3 py-2 rounded-md border">
+              Sign In
+            </button>
+            <button onClick={toggleLoginPopup} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
+              Create an account
+            </button>
           </div>
           <div className="flex-col justify-end lg:hidden md:flex">
             <button onClick={toggleNavbar}>
@@ -55,19 +66,17 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="flex space-x-6">
-              <a href="#" className="px-3 py-2 rounded-md border">
+              <button onClick={toggleLoginPopup} className="px-3 py-2 rounded-md border">
                 Sign In
-              </a>
-              <a
-                href="#"
-                className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md"
-              >
+              </button>
+              <button onClick={toggleLoginPopup} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
                 Create an account
-              </a>
+              </button>
             </div>
           </div>
         )}
       </div>
+      {loginPopupVisible && <Login_popup closePopup={toggleLoginPopup} />}
     </nav>
   );
 };

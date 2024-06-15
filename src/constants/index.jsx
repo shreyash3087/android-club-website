@@ -13,9 +13,9 @@ import user5 from "../assets/profile-pictures/user5.jpg";
 import user6 from "../assets/profile-pictures/user6.jpg";
 
 export const navItems = [
-  { label: "Events", href: "#" },
+  { label: "Events", href: "/events" },
   { label: "About", href: "#" },
-  { label: "Team", href: "#" },
+  { label: "Team", href: "/team" },
   { label: "merchandise", href: "#" },
 ];
 
