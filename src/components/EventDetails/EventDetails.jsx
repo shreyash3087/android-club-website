@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { format, parseISO } from "date-fns";
-import combinedEventsData from "./EventsData";
+import EventsData from "./EventsData";
 import "./EventDetails.css";
 
 const EventDetails = () => {
   const { eventId } = useParams();
-  const event = combinedEventsData.find((e) => e.id === eventId);
+  const event = EventsData.find((e) => e.id === eventId);
 
   if (!event) {
     return <div>Event not found</div>;
@@ -26,7 +26,7 @@ const EventDetails = () => {
             <div className="other_details">
               <div className="text">
                 <div className="venue">Venue: {event.venue}</div>
-                <div className="date">Date: {event.date}</div>
+                <div className="date">Date: {format(parseISO(event.startDatetime), "MMMM dd, yyyy")}</div>
                 <div className="time">
                   Time: {format(parseISO(event.startDatetime), "h:mm a")}
                 </div>

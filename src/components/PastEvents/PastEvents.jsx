@@ -6,19 +6,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
-import eventsData from "../EventDetails/EventsData"; // Import eventsData
+import eventsData from "../EventDetails/EventsData";
 import "./PastEvents.css";
 
-function importAll(r) {
-  let images = {};
-  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-  return images;
-}
-
-const images = importAll(require.context('/Events_Page', false, /\.(png|jpe?g|svg)$/));
-
 function PastEvents() {
-  const pastEvents = eventsData.filter(event => event.posterUrl);
+  const nonEmptyPosterEvents = eventsData.filter(event => event.posterUrl);
 
   return (
     <div className="pastEventsContainer">
@@ -44,10 +36,10 @@ function PastEvents() {
         modules={[EffectCoverflow, Pagination, Navigation]}
         className="swiper_container"
       >
-        {pastEvents.map((event, index) => (
+        {nonEmptyPosterEvents.map((event, index) => (
           <SwiperSlide key={index}>
             <Link to={`/events/${event.id}`}>
-              <img src={images[event.posterUrl]} alt={event.title} />
+              <img src={event.posterUrl} alt={event.title} />
             </Link>
           </SwiperSlide>
         ))}
