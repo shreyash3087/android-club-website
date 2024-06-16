@@ -1,10 +1,13 @@
 import { Menu, X } from "lucide-react";
 import logo1 from "/src/assets/logo1.png";
 import { navItems } from "/src/constants";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Login_popup from "../LoginPopUp/Login_popup";
 import Model from "react-modal";
+import { StoreContext } from "../../context/StoreContext";
+import { useNavigate } from "react-router-dom";
+import profile_icon from "/src/assets/profile_icon.png";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -13,7 +16,7 @@ const Navbar = () => {
 
   const toggleNavbar = () => {
     if (!mobileDrawerOpen) {
-      setLoginPopupVisible(false); 
+      setLoginPopupVisible(false);
     }
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
@@ -24,6 +27,14 @@ const Navbar = () => {
     }
     setSignIn(shouldSignIn);
     setLoginPopupVisible(!loginPopupVisible);
+  };
+
+  const { token, setToken } = useContext(StoreContext);
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
   };
 
   return (
@@ -46,14 +57,28 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="hidden justify-center items-center space-x-12 max-xl:space-x-4 lg:flex">
-            <button onClick={() => toggleLoginPopup(true)} className="px-3 py-2 rounded-md border">
-              Sign In
-            </button>
-            <button onClick={() => toggleLoginPopup(false)} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
-              Create an account
-            </button>
-          </div>
+
+          {!token ? (
+            <div className="hidden justify-center items-center space-x-12 max-xl:space-x-4 lg:flex">
+              <button
+                onClick={() => toggleLoginPopup(true)}
+                className="px-3 py-2 rounded-md border"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => toggleLoginPopup(false)}
+                className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md"
+              >
+                Create an account
+              </button>
+            </div>
+          ) : (
+            <div className="navbar-profile">
+              <img src={profile_icon} onClick={logout} alt="" />
+            </div>
+          )}
+
           <div className="flex-col justify-end lg:hidden md:flex">
             <button onClick={toggleNavbar}>
               {mobileDrawerOpen ? <X /> : <Menu />}
@@ -70,17 +95,28 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="flex space-x-6">
-              <button onClick={() => toggleLoginPopup(true)} className="px-3 py-2 rounded-md border">
+              <button
+                onClick={() => toggleLoginPopup(true)}
+                className="px-3 py-2 rounded-md border"
+              >
                 Sign In
               </button>
-              <button onClick={() => toggleLoginPopup(false)} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
+              <button
+                onClick={() => toggleLoginPopup(false)}
+                className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md"
+              >
                 Create an account
               </button>
             </div>
           </div>
         )}
       </div>
-      {loginPopupVisible && <Login_popup closePopup={() => setLoginPopupVisible(false)} initialSignIn={signIn} />}
+      {loginPopupVisible && (
+        <Login_popup
+          closePopup={() => setLoginPopupVisible(false)}
+          initialSignIn={signIn}
+        />
+      )}
     </nav>
   );
 };
