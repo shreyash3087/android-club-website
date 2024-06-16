@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Components from "./login_style";
 
-const Login_popup = ({ closePopup }) => {
-  const [signIn, toggle] = useState(true);
+const Login_popup = ({ closePopup, initialSignIn }) => {
+  const [signIn, toggle] = useState(initialSignIn);
   const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    toggle(initialSignIn);
+  }, [initialSignIn]);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -17,7 +21,7 @@ const Login_popup = ({ closePopup }) => {
       <div className="bg-none w-full h-full rounded-lg">
         <Components.PageWrapper>
           <Components.Container $isClosing={isClosing}>
-            <Components.CloseButton onClick={handleClose}>X</Components.CloseButton>
+            <Components.CloseButton onClick={handleClose} signIn={signIn}>X</Components.CloseButton>
             
             <Components.SignUpContainer $signinIn={signIn}>
               <Components.Form>

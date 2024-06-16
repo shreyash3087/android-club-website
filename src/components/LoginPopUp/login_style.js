@@ -173,13 +173,13 @@ export const CloseButton = styled.button`
   background-color: transparent;
   border-color: #ffffff;
   font-size: 1rem;
-  color: white;
+  color: ${({ signIn }) => (signIn ? 'white' : '#182b23')};
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 500;
   @media (max-width: 1024px) {
-    color:#182b23;
+    color: #182b23;
   }
 `;
 

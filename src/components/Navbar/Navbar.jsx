@@ -8,6 +8,7 @@ import Login_popup from "../LoginPopUp/Login_popup";
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+  const [signIn, setSignIn] = useState(true);
 
   const toggleNavbar = () => {
     if (!mobileDrawerOpen) {
@@ -16,12 +17,14 @@ const Navbar = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
 
-  const toggleLoginPopup = () => {
+  const toggleLoginPopup = (shouldSignIn = true) => {
     if (!loginPopupVisible) {
       setMobileDrawerOpen(false);
     }
+    setSignIn(shouldSignIn);
     setLoginPopupVisible(!loginPopupVisible);
   };
+
   return (
     <nav className="sticky top-0 z-50 py-3 border-b backdrop-blur-lg border-neutral-700/80">
       <div className="relative px-4 mx-auto lg:text-sm">
@@ -43,10 +46,10 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="hidden justify-center items-center space-x-12 max-xl:space-x-4 lg:flex">
-            <button onClick={toggleLoginPopup} className="px-3 py-2 rounded-md border">
+            <button onClick={() => toggleLoginPopup(true)} className="px-3 py-2 rounded-md border">
               Sign In
             </button>
-            <button onClick={toggleLoginPopup} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
+            <button onClick={() => toggleLoginPopup(false)} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
               Create an account
             </button>
           </div>
@@ -66,17 +69,17 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="flex space-x-6">
-              <button onClick={toggleLoginPopup} className="px-3 py-2 rounded-md border">
+              <button onClick={() => toggleLoginPopup(true)} className="px-3 py-2 rounded-md border">
                 Sign In
               </button>
-              <button onClick={toggleLoginPopup} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
+              <button onClick={() => toggleLoginPopup(false)} className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md">
                 Create an account
               </button>
             </div>
           </div>
         )}
       </div>
-      {loginPopupVisible && <Login_popup closePopup={toggleLoginPopup} />}
+      {loginPopupVisible && <Login_popup closePopup={() => setLoginPopupVisible(false)} initialSignIn={signIn} />}
     </nav>
   );
 };
