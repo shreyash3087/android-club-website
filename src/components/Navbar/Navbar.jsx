@@ -4,6 +4,7 @@ import { navItems } from "/src/constants";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Login_popup from "../LoginPopUp/Login_popup";
+import Model from "react-modal";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);

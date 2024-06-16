@@ -1,8 +1,7 @@
+
 .team-bg {
-    background-image: url('./TeamPage_assets/main_bg.png');
     background-color: #E6F1E8;
-    /* background-color: pink; */
-    color: #182b23;
+    color: #254336;
 }
 
 .text-color {
@@ -10,7 +9,7 @@
     background-color: #E6F1E8;
 }
 .dark-green-bg{
-    background-color: #182b23;
+    background-color: #182B23;
 }
 
 .post{
@@ -22,9 +21,7 @@
 }
 
 .link-hover:hover{
-  color: #39ff14;
   font-weight: 600;
-
 }
 
 
