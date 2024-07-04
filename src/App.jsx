@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
@@ -8,10 +7,7 @@ import Team from "./pages/Team/Team";
 import ContactUs from "./pages/Contact-us/ContactUs";
 import EventDetails from "./components/EventDetails/EventDetails";
 import Footer from "./components/Footer/Footer";
-import Preloader from "./components/PreLoader/Preloader";
-
 function App() {
-
   return (
     <div className="app">
       <Navbar />

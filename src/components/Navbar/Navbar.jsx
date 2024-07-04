@@ -38,6 +38,7 @@ const Navbar = () => {
   const homeButton=()=>{
     navigate("/")
   };
+  
   return (
     <nav className="fixed top-0 z-50 w-full py-3 px-12 border-b backdrop-blur-lg border-neutral-700/80 bg-[#254336]">
       <div className="relative mx-auto lg:text-sm">

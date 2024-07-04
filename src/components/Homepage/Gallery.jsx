@@ -5,10 +5,10 @@ import { RxDotFilled } from "react-icons/rx";
 function Gallery() {
   const slides = [
     {
-      url: "/Events_Page/Android_Fusion/img4.jpg",
+      url: "/Events_Page/Android_Fusion/img1.jpg",
     },
     {
-      url: "/Events_Page/Android_Fusion/img5.jpg",
+      url: "/Events_Page/Android_Fusion/img2.jpg",
     },
     {
       url: "/Events_Page/Android_Fusion/img3.jpg",
