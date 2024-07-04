@@ -28,7 +28,7 @@ const Team = () => {
 
   return (
     <>
-      <main className="bg-[#E6F1E8]">
+      <main className="bg-[#E6F1E8] mt-16">
         <div className="h-[90vh] min-h-[600px] w-full relative team-bg flex justify-center items-center">
           <motion.img
             src="/TeamPage_Assets/main_bg.png"

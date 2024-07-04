@@ -16,7 +16,7 @@ export const navItems = [
   { label: "Events", href: "/events" },
   { label: "About", href: "#" },
   { label: "Team", href: "/team" },
-  { label: "merchandise", href: "#" },
+  { label: "Blogs", href: "#" },
 ];
 
 export const testimonials = [

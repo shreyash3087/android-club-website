@@ -1,10 +1,8 @@
 import { Menu, X } from "lucide-react";
-import logo1 from "/src/assets/logo1.png";
+import logo2 from "/src/assets/logo2.png";
 import { navItems } from "/src/constants";
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import Login_popup from "../LoginPopUp/Login_popup";
-import Model from "react-modal";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 import profile_icon from "/src/assets/profile_icon.png";
@@ -37,21 +35,23 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const homeButton=()=>{
+    navigate("/")
+  };
   return (
-    <nav className="sticky top-0 z-50 py-3 border-b backdrop-blur-lg border-neutral-700/80">
-      <div className="relative px-4 mx-auto lg:text-sm">
+    <nav className="fixed top-0 z-50 w-full py-3 px-12 border-b backdrop-blur-lg border-neutral-700/80 bg-[#254336]">
+      <div className="relative mx-auto lg:text-sm">
         <div className="flex justify-between items-center">
-          <div className="flex flex-shrink-0 items-center">
-            <img className="mr-2 h-10 w-30" src={logo1} alt="Logo" />
-            <span className="text-xl tracking-tight hover:text-green-500">
-              {/* name here */}
+          <div className="flex flex-shrink-0 items-center cursor-pointer" onClick={homeButton}>
+            <img className="mr-2 h-10 w-30" src={logo2} alt="Logo" />
+            <span className="text-xl tracking-tight hover:text-[#3ab680]">
               ANDROID CLUB
             </span>
           </div>
           <ul className="hidden ml-14 space-x-12 lg:flex">
             {navItems.map((item, index) => (
               <li key={index}>
-                <span className="px-2 py-1 h-6 text-lg max-xl:px-0 font-medium text-gray-500 uppercase rounded-lg hover:bg-neutral-600/50 hover:text-green-400">
+                <span className="px-2 py-1 h-6 text-lg max-xl:px-0 font-medium text-white uppercase rounded-xl hover:bg-gray-100 hover:text-[#254336]">
                   <a href={item.href}>{item.label}</a>
                 </span>
               </li>
@@ -68,7 +68,7 @@ const Navbar = () => {
               </button>
               <button
                 onClick={() => toggleLoginPopup(false)}
-                className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md"
+                className="px-3 py-2 bg-gradient-to-r from-[#47856a] to-[#02562f] rounded-md"
               >
                 Create an account
               </button>
