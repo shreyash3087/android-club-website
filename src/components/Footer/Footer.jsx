@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
@@ -40,7 +40,9 @@ const Footer = () => {
                 </a>
               </h2>
               <p className="text-white font-thin mb-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ab adipisci ullam harum dolor dolorem soluta tenetur at similique corrupti?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                ab adipisci ullam harum dolor dolorem soluta tenetur at
+                similique corrupti?
               </p>
               <a href="#" className="text-[#83d1ae]">
                 read more <FontAwesomeIcon icon={faArrowRight} />
@@ -107,7 +109,8 @@ const Footer = () => {
                     </li>
                     <li>
                       <a href="#" className="block py-1">
-                      Kotri Kalan, Ashta, Near, Indore Road, Bhopal, Madhya Pradesh 466114
+                        Kotri Kalan, Ashta, Near, Indore Road, Bhopal, Madhya
+                        Pradesh 466114
                       </a>
                     </li>
                   </ul>
@@ -116,9 +119,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr className="mt-10 mb-5 border-[#779f8d2d]"/>
+        <hr className="mt-10 mb-5 border-[#779f8d2d]" />
         <div className="flex flex-wrap items-center">
-          
           <div className="w-full lg:w-auto mb-4 lg:mb-0">
             <h3 className="text-sm font-extralight">Our Sponsers :</h3>
           </div>
@@ -152,28 +154,19 @@ const Footer = () => {
           </div>
           <div className="w-full lg:w-auto text-lg-right">
             <p className="mb-0">
-              <a
-                href="#"
-                className="py-2 px-4 rounded text-[#83d1ae]"
-              >
+              <a href="#" className="py-2 px-4 rounded text-[#83d1ae]">
                 See All <FontAwesomeIcon icon={faArrowRight} />
               </a>
             </p>
           </div>
         </div>
-        <hr className="mt-5 mb-5 border-[#779f8d2d]"/>
+        <hr className="mt-5 mb-5 border-[#779f8d2d]" />
         <div className="flex flex-wrap mt-10">
           <div className="w-full lg:w-2/3 text-center lg:text-left">
             <p className="copyright">
-              Copyright
-              &copy; {currentYear} {" "}
-              All rights reserved | Made with {" "}
-              <FontAwesomeIcon icon={faHeart} style={{ color: '#83d1ae' }} /> by{" "}
-              <a
-                href="https://colorlib.com"
-                target="_blank"
-                className="text-[#83d1ae]"
-              >
+              Copyright &copy; {currentYear} All rights reserved | Made with{" "}
+              <FontAwesomeIcon icon={faHeart} style={{ color: "#83d1ae" }} /> by{" "}
+              <a href="" target="_blank" className="text-[#83d1ae]">
                 SDC Android Club
               </a>
             </p>
