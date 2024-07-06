@@ -5,19 +5,40 @@ import { RxDotFilled } from "react-icons/rx";
 function Gallery() {
   const slides = [
     {
-      url: "src/assets/galleryimages/1.jpg",
+      url: "/Events_Page/Android_Fusion/img1.jpg",
     },
     {
-      url: "src/assets/galleryimages/2.jpg",
+      url: "/Events_Page/Android_Fusion/img2.jpg",
     },
     {
-      url: "src/assets/galleryimages/3.jpg",
+      url: "/Events_Page/Android_Fusion/img3.jpg",
     },
     {
-      url: "src/assets/galleryimages/4.jpg",
+      url: "/Events_Page/DSA_Tussle/img1.jpg",
     },
     {
-      url: "src/assets/galleryimages/5.jpg",
+      url: "/Events_Page/DSA_Tussle/img2.jpg",
+    },
+    {
+      url: "/Events_Page/DSA_Tussle/img3.jpg",
+    },
+    {
+      url: "/Events_Page/DSA_Tussle/img4.jpg",
+    },
+    {
+      url: "/Events_Page/DSA_Tussle/img1.jpg",
+    },
+    {
+      url: "/Events_Page/Meet_and_Greet/img1.jpg",
+    },
+    {
+      url: "/Events_Page/Meet_and_Greet/img2.jpg",
+    },
+    {
+      url: "/Events_Page/Meet_and_Greet/img3.jpg",
+    },
+    {
+      url: "/Events_Page/Meet_and_Greet/img4.jpg",
     },
   ];
 
@@ -41,10 +62,10 @@ function Gallery() {
 
   return (
     <>
-      <div className="mt-[130px]">
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide">
+      <div className="mt-10">
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide text-gray-500">
           A Glimpse of{" "}
-          <span className="bg-gradient-to-r from-green-500 to-green-800 text-transparent bg-clip-text">
+          <span className="text-[#254336]">
             Android alchemy
           </span>
         </h2>
@@ -52,22 +73,22 @@ function Gallery() {
       </div>
       <div className="container mx-auto p-1">
         <div className="text-center flex flex-wrap justify-center items-center">
-          <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
+          <span className="bg-gray-100 text-[#254336] rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
             Events
           </span>
-          <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2whitespace-nowrap">
+          <span className="bg-gray-100 text-[#254336] rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2whitespace-nowrap">
             Competitions
           </span>
-          <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
+          <span className="bg-gray-100 text-[#254336] rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
             Hackathons
           </span>
-          <span className="bg-neutral-900 text-green-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
+          <span className="bg-gray-100 text-[#254336] rounded-full h-6 text-sm font-medium px-2 py-1 uppercase mx-2 my-2 whitespace-nowrap">
             and much more to come
           </span>
         </div>
       </div>
 
-      <div className="max-w-[1400px] h-[780px] w-full m-auto pb-20 pt-0 px-4 group relative mt-20 border-b border-neutral-800 min-h-[800px]">
+      <div className="max-w-[1400px] h-[780px] w-[80%] m-auto pb-20 pt-0 px-4 group relative mt-20 border-b border-neutral-800 min-h-[800px]">
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
           className="w-full h-full rounded-2xl bg-center bg-cover duration-500"

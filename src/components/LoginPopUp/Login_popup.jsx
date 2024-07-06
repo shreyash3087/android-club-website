@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import * as Components from "./login_style";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
@@ -6,12 +6,14 @@ import axios from "axios";
 const Login_popup = ({ closePopup, initialSignIn }) => {
   const [signIn, toggle] = useState(initialSignIn);
   const [isClosing, setIsClosing] = useState(false);
+  const containerRef = useRef(null);
 
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
   });
+
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -22,44 +24,60 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
 
   const onLogin = async (event) => {
     event.preventDefault();
+    let newUrl = `${url}/api/user/login`;
 
-    let newUrl = url;
-
-    newUrl += "/api/user/login";
-
-    const response = await axios.post(newUrl, data);
-
-    if (response.data.success) {
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
-      console.log("Successfully Loged In");
-      handleClose();
-    } else {
-      alert(response.data.message);
+    try {
+      const response = await axios.post(newUrl, data);
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        console.log("Successfully Logged In");
+        handleClose();
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error logging in", error);
+      alert("An error occurred. Please try again.");
     }
   };
 
   const onSignup = async (event) => {
     event.preventDefault();
+    let newUrl = `${url}/api/user/register`;
 
-    let newUrl = url;
-    newUrl += "/api/user/register";
-
-    const response = await axios.post(newUrl, data);
-
-    if (response.data.success) {
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
-      console.log("Successfully Signed Up");
-      handleClose();
-    } else {
-      alert(response.data.message);
+    try {
+      const response = await axios.post(newUrl, data);
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        console.log("Successfully Signed Up");
+        handleClose();
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error signing up", error);
+      alert("An error occurred. Please try again.");
     }
   };
 
   useEffect(() => {
     toggle(initialSignIn);
   }, [initialSignIn]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -72,8 +90,8 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
     <div className="fixed top-16 left-0 w-full h-full flex justify-center items-center max-xl:w-full">
       <div className="bg-none w-full h-full rounded-lg">
         <Components.PageWrapper>
-          <Components.Container $isClosing={isClosing}>
-            <Components.CloseButton onClick={handleClose} signIn={signIn}>
+          <Components.Container ref={containerRef} $isClosing={isClosing}>
+            <Components.CloseButton onClick={handleClose} $signinIn={signIn}>
               X
             </Components.CloseButton>
 
@@ -131,7 +149,7 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
                   Forgot your password?
                 </Components.Anchor>
                 <Components.Anchor2 onClick={() => toggle(false)}>
-                  Dont Have An Account?
+                  Don't Have An Account?
                 </Components.Anchor2>
                 <Components.Button onClick={onLogin}>Log In</Components.Button>
               </Components.Form>

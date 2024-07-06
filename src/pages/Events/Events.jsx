@@ -52,7 +52,7 @@ function Events() {
   };
 
   return (
-    <div>
+    <div className="mt-16">
       <div className="hero_section">
         <div className="event_title">Our Events</div>
         <motion.div

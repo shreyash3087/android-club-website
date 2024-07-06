@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
@@ -7,6 +6,7 @@ import Events from "./pages/Events/Events";
 import Team from "./pages/Team/Team";
 import ContactUs from "./pages/Contact-us/ContactUs";
 import EventDetails from "./components/EventDetails/EventDetails";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <div className="app">
@@ -18,6 +18,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/events/:eventId" element={<EventDetails />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
