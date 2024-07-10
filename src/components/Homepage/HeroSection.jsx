@@ -28,7 +28,7 @@ const HeroSection = () => {
           <div className="text-red-500">{errorMessage}</div>
         ) : (
           <Spline 
-            scene="src/assets/scene.splinecode" 
+            scene="/scene.splinecode" 
             onLoad={(e) => {
               console.log("Spline scene loaded successfully", e);
             }}
