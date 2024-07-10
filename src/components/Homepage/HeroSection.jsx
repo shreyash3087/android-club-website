@@ -22,7 +22,7 @@ const HeroSection = () => {
   return (
     <div>
       <div className="h-screen">
-        <Spline scene="src/assets/scene.splinecode" className="relative z-30 max-xl:right-50 transition-all duration-1000 ease-in-out max-lg:opacity-0" />
+        {/* <Spline scene="src/assets/scene.splinecode" className="relative z-30 max-xl:right-50 transition-all duration-1000 ease-in-out max-lg:opacity-0" /> */}
 
         <div className="flex flex-col items-center justify-center pt-20 w-[40%] h-screen absolute top-8 left-48 transition-all duration-500 max-xl:left-24 max-[1100px]:left-16 max-lg:w-full max-lg:left-0">
           <h1 className="text-5xl tracking-wide text-center sm:text-6xl lg:text-7xl">
