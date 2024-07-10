@@ -1,0 +1,21 @@
+/* Dancing Animation */
+@keyframes dance {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-dance {
+  animation: dance 1s ease-in-out infinite;
+}
+
+
