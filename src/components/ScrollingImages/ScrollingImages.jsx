@@ -21,21 +21,20 @@ const ScrollingImages = (props) => {
 
   return (
     <>
-        {/* Using FastMarquee from react-fast-marquee */}
-        <FastMarquee
-          gradient={false}
-          autoFill={true}
-          direction={props.direction}
-          speed={scrollSpeed} // Dynamically adjust speed based on scroll
-          className='text-xl  py-5 bg-green-950 my-5 '
-        >
-          {/* Example images */}
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/unStop.avif' alt='image' />
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/coding-ninja-logo.jpeg' alt='image' />
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/dainikbhaskar.png' alt='image' />
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/notion.jpg' alt='image' />
-        </FastMarquee>
-        </>
+      <FastMarquee
+        gradient={false}
+        autoFill={true}
+        direction={props.direction}
+        speed={scrollSpeed}
+        className={` bg-green-950 py-4 ${props.marginClass} `}
+      >
+        {/* h-16 mr-10 w-36 rounded-xl */}
+        <motion.img className='h-16 mr-10 w-36 rounded-md' src='AboutPage_Assets/unStop.avif' alt='image' />
+        <motion.img className=' h-16 mr-10 w-36 rounded-md' src='AboutPage_Assets/coding-ninja-logo.jpeg' alt='image' />
+        <motion.img className=' h-16 mr-10 w-36 rounded-md' src='AboutPage_Assets/dainikbhaskar.png' alt='image' />
+        <motion.img className=' h-16 mr-10 w-36 rounded-md' src='AboutPage_Assets/notion.jpg' alt='image' />
+      </FastMarquee>
+    </>
   );
 };
 

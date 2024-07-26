@@ -18,16 +18,27 @@ const ContactUs = () => {
     threshold: 0.5,
     triggerOnce: true,
   });
+  const textVariants = {
+    hidden: { opacity: 0, pathLength: 0 },
+    visible: {
+      opacity: 1,
+      pathLength: 1,
+      transition: {
+        duration: 2, 
+        ease: "easeInOut" 
+      }}}
   return (
     <>
       <section className='light-green-bg flex justify-center items-center flex-col'>
         <div className='h-36 w-full px-10 mt-10 mb-36 '>
-          <h1 className='text-[#254336] text-4xl bg-white'>Brands That Trusted us</h1>
+          <h1 className='text-[#254336] text-2xl font-semibold bg-white'>Brands That Trusted us</h1>
           <ScrollingImages
             direction="left"
+            marginClass="my-5"
           />
           <ScrollingImages
             direction="right"
+            marginClass="my-2"
           />
         </div>
         <div className='relative mt-20 border'>
@@ -115,3 +126,4 @@ const ContactUs = () => {
 }
 
 export default ContactUs;
+
