@@ -14,9 +14,9 @@ import user6 from "../assets/profile-pictures/user6.jpg";
 
 export const navItems = [
   { label: "Events", href: "/events" },
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
   { label: "Team", href: "/team" },
-  { label: "Blogs", href: "#" },
+  { label: "blogs", href: "/blogs" },
 ];
 
 export const testimonials = [
@@ -119,7 +119,6 @@ export const checklistItems = [
       "Our members are dedicated and hardworking, always striving to achieve excellence in every project and event.",
   },
 ];
-
 
 export const resourcesLinks = [
   { href: "#", text: "Getting Started" },
