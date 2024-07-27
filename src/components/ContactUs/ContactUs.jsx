@@ -15,12 +15,11 @@ import FormSponsors from '../FormSponsors/FormSponsors';
 
 const ContactUs = () => {
   const [isHovered, setIsHovered] = useState(false);
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1 }
   };
-
-
   const textVariants = {
     hidden: { opacity: 0, pathLength: 0 },
     visible: {
@@ -205,3 +204,4 @@ const ContactUs = () => {
 }
 
 export default ContactUs;
+

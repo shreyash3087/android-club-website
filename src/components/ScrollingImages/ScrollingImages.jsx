@@ -21,7 +21,6 @@ const ScrollingImages = (props) => {
 
   return (
     <>
-      {/* Using FastMarquee from react-fast-marquee */}
       <FastMarquee
         gradient={false}
         autoFill={true}
