@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 import EventsData from "./EventsData";
@@ -7,6 +7,10 @@ import "./EventDetails.css";
 const EventDetails = () => {
   const { eventId } = useParams();
   const event = EventsData.find((e) => e.id === eventId);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!event) {
     return <div>Event not found</div>;
@@ -31,7 +35,7 @@ const EventDetails = () => {
                   Time: {format(parseISO(event.startDatetime), "h:mm a")}
                 </div>
               </div>
-              <img src="/Events_Page/complete.png" />
+              <img src="/Events_Page/complete.png" alt="Complete" />
             </div>
           </div>
         </div>

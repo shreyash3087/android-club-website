@@ -87,7 +87,7 @@ const Navbar = () => {
           </div>
         </div>
         {mobileDrawerOpen && (
-          <div className="flex fixed right-0 z-20 flex-col justify-center items-center p-12 w-full bg-neutral-900 lg:hidden">
+          <div className="flex fixed right-0 z-20 flex-col justify-center items-center p-12 w-full bg-[#13221c] lg:hidden">
             <ul>
               {navItems.map((item, index) => (
                 <li key={index} className="py-4">
@@ -104,7 +104,7 @@ const Navbar = () => {
               </button>
               <button
                 onClick={() => toggleLoginPopup(false)}
-                className="px-3 py-2 bg-gradient-to-r from-green-500 to-green-800 rounded-md"
+                className="px-3 py-2 bg-gradient-to-r from-[#47856a] to-[#02562f] rounded-md"
               >
                 Create an account
               </button>

@@ -88,7 +88,7 @@ function Gallery() {
         </div>
       </div>
 
-      <div className="max-w-[1400px] h-[780px] w-[80%] m-auto pb-20 pt-0 px-4 group relative mt-20 border-b border-neutral-800 min-h-[800px]">
+      <div className="max-w-[1400px] h-[780px] w-[80%] m-auto pb-20 pt-0 px-4 group relative mt-20 border-b border-neutral-800 min-h-[800px] max-sm:w-[95%]">
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
           className="w-full h-full rounded-2xl bg-center bg-cover duration-500"

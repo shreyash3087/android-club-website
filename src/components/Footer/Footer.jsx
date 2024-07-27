@@ -1,26 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faHeart } from "@fortawesome/free-solid-svg-icons";
+
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [popupMessage, setPopupMessage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+
   const homeButton = () => {
     navigate("/");
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    if (!email) {
+      setPopupMessage("Email address is required.");
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 1000);
+      return;
+    }
+
+    if (!emailPattern.test(email)) {
+      setPopupMessage("Please enter a valid email address.");
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 1000);
+      return;
+    }
+
+    setPopupMessage("Thanks for Subscribing, We will contact you soon!");
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
 
   return (
     <footer className="bg-[#254336] mt-16 text-white py-6 relative">
       <div className="container w-[80%] mx-auto">
-        <div className="flex w-[35%] justify-center absolute -top-8 left-1/2 translate-x-[-50%]">
+        <div className="flex w-[35%] justify-center absolute -top-8 left-1/2 translate-x-[-50%] max-lg:w-2/3">
           <div className="w-full">
             <div className="mb-5">
-              <form className="flex rounded-3xl overflow-hidden bg-white py-1 pl-4 pr-1">
+              <form
+                className="flex rounded-3xl overflow-hidden bg-white py-1 pl-4 pr-1"
+                onSubmit={handleSubmit}
+              >
                 <input
                   type="text"
                   className="w-full bg-transparent focus:outline-none text-gray-500 pr-2"
                   placeholder="Enter email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                   type="submit"
@@ -32,27 +70,29 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex mt-4 justify-center">
-          <div className="flex justify-between text-left">
-            <div className="w-1/3 mb-6 lg:mb-0">
+          <div className="flex justify-between text-left max-lg:flex-col ">
+            <div className="w-1/3 mb-6 lg:mb-0 max-lg:w-full max-lg:text-center">
               <h2 className="text-2xl font-bold mb-4">
                 <a href="#" onClick={homeButton}>
                   Android Club
                 </a>
               </h2>
               <p className="text-white font-thin mb-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-                ab adipisci ullam harum dolor dolorem soluta tenetur at
-                similique corrupti?
+                Imagine a place where every concept is embraced, every issue is
+                creatively addressed, and everyone learns from one another and
+                works collectively to become more capable individuals. The
+                Android Club is about wearing your thinking caps and unleashing
+                your creativity to develop apps that make a difference.
               </p>
               <a href="#" className="text-[#83d1ae]">
                 read more <FontAwesomeIcon icon={faArrowRight} />
               </a>
             </div>
-            <div className="flex gap-16">
-              <div className="border-l-2 border-[#779f8d2d] pl-4">
+            <div className="flex gap-16 max-lg:justify-center max-lg:flex-col max-lg:gap-3">
+              <div className="border-l-2 border-[#779f8d2d] max-lg:border-none max-lg:text-center pl-4">
                 <div className="mb-6 md:mb-0">
                   <h2 className="text-xl font-light">Discover</h2>
-                  <ul className="list-none font-thin">
+                  <ul className="list-none font-thin max-lg:mt-3 max-lg:flex max-lg:gap-5 max-lg:justify-center">
                     <li>
                       <a href="#" className="block py-1">
                         Home
@@ -76,10 +116,10 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="border-l-2 border-[#779f8d2d] pl-4">
+              <div className="border-l-2 border-[#779f8d2d] max-lg:border-none max-lg:text-center pl-4">
                 <div className="mb-6 md:mb-0">
                   <h2 className="text-xl font-light">Social</h2>
-                  <ul className="list-none font-thin">
+                  <ul className="list-none font-thin max-lg:mt-3 max-lg:flex max-lg:gap-5 max-lg:justify-center">
                     <li>
                       <a href="#" className="block py-1">
                         LinkedIn
@@ -98,7 +138,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="border-l-2 border-[#779f8d2d] pl-4 max-w-60">
+              <div className="border-l-2 border-[#779f8d2d] max-lg:border-none max-lg:text-center pl-4 max-w-60 max-lg:max-w-full">
                 <div className="mb-6 md:mb-0">
                   <h2 className="text-xl font-light">Contacts</h2>
                   <ul className="list-none font-thin">
@@ -120,12 +160,12 @@ const Footer = () => {
           </div>
         </div>
         <hr className="mt-10 mb-5 border-[#779f8d2d]" />
-        <div className="flex flex-wrap items-center">
-          <div className="w-full lg:w-auto mb-4 lg:mb-0">
-            <h3 className="text-sm font-extralight">Our Sponsers :</h3>
+        <div className="flex flex-wrap items-center justify-center lg:justify-between">
+          <div className="w-full lg:w-auto mb-4 lg:mb-0 text-center lg:text-left">
+            <h3 className="text-sm font-extralight">Our Sponsors :</h3>
           </div>
-          <div className="w-full lg:flex-1">
-            <p className="text-sm flex flex-wrap gap-4 mb-4 lg:mb-0">
+          <div className="w-full lg:flex-1 text-center lg:text-left">
+            <p className="text-sm flex flex-wrap gap-4 mb-4 lg:mb-0 justify-center lg:justify-start">
               <a href="#" className="flex items-center">
                 <span className="ion-logo-ionic mr-2"></span>Unstop
               </a>
@@ -152,7 +192,7 @@ const Footer = () => {
               </a>
             </p>
           </div>
-          <div className="w-full lg:w-auto text-lg-right">
+          <div className="w-full lg:w-auto text-lg-right text-center lg:text-right">
             <p className="mb-0">
               <a href="#" className="py-2 px-4 rounded text-[#83d1ae]">
                 See All <FontAwesomeIcon icon={faArrowRight} />
@@ -161,8 +201,8 @@ const Footer = () => {
           </div>
         </div>
         <hr className="mt-5 mb-5 border-[#779f8d2d]" />
-        <div className="flex flex-wrap mt-10">
-          <div className="w-full lg:w-2/3 text-center lg:text-left">
+        <div className="flex flex-wrap mt-10 justify-center lg:justify-between">
+          <div className="w-full lg:w-2/3 text-center lg:text-left mb-4 lg:mb-0">
             <p className="copyright">
               Copyright &copy; {currentYear} All rights reserved | Made with{" "}
               <FontAwesomeIcon icon={faHeart} style={{ color: "#83d1ae" }} /> by{" "}
@@ -186,6 +226,13 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {showPopup && (
+        <div className="popup fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-lg text-center text-black">
+            <p>{popupMessage}</p>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };
