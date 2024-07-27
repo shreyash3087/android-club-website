@@ -1,0 +1,15 @@
+@media (max-width:640px) {
+    .hide-on-small {
+      display: none;
+    }
+    .show-on-small {
+      display: block;
+    }
+   
+  }
+  
+  @media(min-width:641px){
+    .show{
+      display: block;
+    }
+  }

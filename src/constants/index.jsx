@@ -119,7 +119,6 @@ export const checklistItems = [
       "Our members are dedicated and hardworking, always striving to achieve excellence in every project and event.",
   },
 ];
-
 export const resourcesLinks = [
   { href: "#", text: "Getting Started" },
   { href: "#", text: "Documentation" },
@@ -142,4 +141,42 @@ export const communityLinks = [
   { href: "#", text: "Conferences" },
   { href: "#", text: "Hackathons" },
   { href: "#", text: "Jobs" },
+];
+
+// for static bar
+export const sponsorsIcon = [
+ {
+   logo:"AboutPage_Assets/unStop.avif"
+ },
+ {
+   logo:"AboutPage_Assets/coding-ninja-logo.jpeg"
+ },
+ {
+   logo:"AboutPage_Assets/notion.jpg"
+ },
+ {
+   logo:"AboutPage_Assets/hackerarth-696x348.webp"
+ },
+];
+
+// for marquee
+export const sponsorsLogo = [
+ {
+   logo:"AboutPage_Assets/unStop.avif"
+ },
+ {
+   logo:"AboutPage_Assets/coding-ninja-logo.jpeg"
+ },
+ {
+   logo:"AboutPage_Assets/dainikbhaskar.png"
+ },
+ {
+   logo:"AboutPage_Assets/notion.jpg"
+ },
+ {
+   logo:"AboutPage_Assets/give_my_certificate.png"
+ },
+ {
+   logo:"AboutPage_Assets/hackerarth-696x348.webp"
+ },
 ];

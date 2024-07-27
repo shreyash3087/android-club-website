@@ -1,0 +1,21 @@
+@media (max-width:640px){
+    .contact-info{    
+        flex-direction: column;
+        gap: 28px;
+    }
+    .email{
+        width: 130%;
+    }
+    .social-icon{
+        margin-top: 15px;
+    }
+    .margin_small{
+        margin-left: 8px;
+    }
+   
+        .hide-on-small {
+          display: none;
+        }
+      
+}
+    
