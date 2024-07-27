@@ -37,7 +37,7 @@ const HeroSection = () => {
           }`}
         />
         <Spline
-          scene="src/assets/scene.splinecode"
+          scene="/scene.splinecode"
           onLoad={handleSplineLoad}
           className={`absolute z-30 transition-opacity duration-500 ease-in-out max-lg:opacity-0 ${
             splineLoaded ? "opacity-100" : "opacity-0"
