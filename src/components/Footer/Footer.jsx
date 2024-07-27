@@ -94,22 +94,22 @@ const Footer = () => {
                   <h2 className="text-xl font-light">Discover</h2>
                   <ul className="list-none font-thin max-lg:mt-3 max-lg:flex max-lg:gap-5 max-lg:justify-center">
                     <li>
-                      <a href="#" className="block py-1">
+                      <a href="/" className="block py-1">
                         Home
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="block py-1">
+                      <a href="/events" className="block py-1">
                         Events
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="block py-1">
+                      <a href="/blogs" className="block py-1">
                         Blogs
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="block py-1">
+                      <a href="/about" className="block py-1">
                         About Us
                       </a>
                     </li>
@@ -121,17 +121,28 @@ const Footer = () => {
                   <h2 className="text-xl font-light">Social</h2>
                   <ul className="list-none font-thin max-lg:mt-3 max-lg:flex max-lg:gap-5 max-lg:justify-center">
                     <li>
-                      <a href="#" className="block py-1">
+                      <a
+                        href="https://www.linkedin.com/company/android-club-vit-bhopal/"
+                        className="block py-1"
+                      >
                         LinkedIn
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="block py-1">
+                      <a href="https://x.com/AndroidClubVitb" className="block py-1">
                         Twitter
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="block py-1">
+                      <a href="https://www.youtube.com/@androidclub-vitb-wi4qe" className="block py-1">
+                        Youtube
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.instagram.com/androidclub.vitb/"
+                        className="block py-1"
+                      >
                         Instagram
                       </a>
                     </li>
@@ -143,12 +154,15 @@ const Footer = () => {
                   <h2 className="text-xl font-light">Contacts</h2>
                   <ul className="list-none font-thin">
                     <li>
-                      <a href="#" className="block py-1">
+                      <a
+                        href="mailto:androidclub@vitbhopal.ac.in"
+                        className="block py-1"
+                      >
                         androidclub@vitbhopal.ac.in
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="block py-1">
+                      <a href="/about" className="block py-1 cursor-default">
                         Kotri Kalan, Ashta, Near, Indore Road, Bhopal, Madhya
                         Pradesh 466114
                       </a>
@@ -166,28 +180,60 @@ const Footer = () => {
           </div>
           <div className="w-full lg:flex-1 text-center lg:text-left">
             <p className="text-sm flex flex-wrap gap-4 mb-4 lg:mb-0 justify-center lg:justify-start">
-              <a href="#" className="flex items-center">
+              <a
+                href="https://unstop.com/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Unstop
               </a>
-              <a href="#" className="flex items-center">
+              <a
+                href="https://www.notion.so/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Notion
               </a>
-              <a href="#" className="flex items-center">
+              <a
+                href="https://www.bhaskar.com/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Dainik Bhaskar
               </a>
-              <a href="#" className="flex items-center">
+              <a
+                href="https://www.codechef.com/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Code-Chef
               </a>
-              <a href="#" className="flex items-center">
+              <a
+                href="https://www.codingninjas.com/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Coding Ninjas
               </a>
-              <a href="#" className="flex items-center">
+              <a
+                href="https://givemycertificate.com/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Give My Certificate
               </a>
-              <a href="#" className="flex items-center">
+              <a
+                href="https://www.hackerearth.com/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Hacker Earth
               </a>
-              <a href="#" className="flex items-center">
+              <a
+                href="https://www.techbrain.com.au/"
+                className="flex items-center"
+                target="__blank"
+              >
                 <span className="ion-logo-ionic mr-2"></span>Tech Brain
               </a>
             </p>
@@ -213,13 +259,13 @@ const Footer = () => {
           </div>
           <div className="w-full lg:w-1/3 text-center lg:text-right">
             <p className="mb-0">
-              <a className="mr-3" href="#">
+              <a className="mr-3" href="">
                 Terms
               </a>
-              <a className="mr-3" href="#">
+              <a className="mr-3" href="">
                 Privacy
               </a>
-              <a className="mr-3" href="#">
+              <a className="mr-3" href="">
                 Compliances
               </a>
             </p>
