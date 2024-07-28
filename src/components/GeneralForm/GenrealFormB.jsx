@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { useInView } from 'react-intersection-observer';
 import { motion } from "framer-motion";
-
-const GeneralForm = ()=>{
+import axios from "axios";
+import './GeneralForm.css'
+const GeneralFormB = ()=>{
     const { ref: ref2, inView: inView2 } = useInView({
         threshold: 0.5,
         triggerOnce: true,
@@ -59,7 +60,10 @@ const GeneralForm = ()=>{
       };
 
     return(
-    <motion.form onSubmit={handleSubmit(onSubmit)} className="form absolute right-10 bottom-32 bg-[#96BE96] flex flex-col border-white border-2 items-start gap-16 p-10 w-4/12 rounded-lg"
+   <>
+
+    {/* for smaller and medium screen */}
+    <motion.form onSubmit={handleSubmit(onSubmit)} className=" mt-7 form sm:hidden w-[75%] h-[90%] bg-[#96BE96] flex flex-col border-white border-2 items-start gap-16 p-10 rounded-lg"
     ref={ref2}
               initial="hidden"
               animate={inView2 ? "visible" : "hidden"}
@@ -136,7 +140,8 @@ const GeneralForm = ()=>{
             
       </motion.div>
     </motion.form>
+   </>
   );
 }
 
-export default GeneralForm;
+export default GeneralFormB;

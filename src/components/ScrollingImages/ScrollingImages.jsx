@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import FastMarquee from 'react-fast-marquee';
-
+import { sponsorsLogo } from '../../constants';
 const ScrollingImages = (props) => {
-  const [scrollSpeed, setScrollSpeed] = useState(70); // Initial scroll speed
+  const [scrollSpeed, setScrollSpeed] = useState(40); // Initial scroll speed
 
   useEffect(() => {
     const handleScroll = () => {
       // Calculate scroll speed based on scroll direction
-      const newScrollSpeed = 70 + (window.scrollY * 0.05); // Example adjustment based on scrollY
+      const newScrollSpeed = 40 + (window.scrollY * 0.05); // Example adjustment based on scrollY
       setScrollSpeed(newScrollSpeed);
     };
 
@@ -21,21 +21,23 @@ const ScrollingImages = (props) => {
 
   return (
     <>
-        {/* Using FastMarquee from react-fast-marquee */}
-        <FastMarquee
-          gradient={false}
-          autoFill={true}
-          direction={props.direction}
-          speed={scrollSpeed} // Dynamically adjust speed based on scroll
-          className='text-xl  py-5 bg-green-950 my-5 '
-        >
-          {/* Example images */}
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/unStop.avif' alt='image' />
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/coding-ninja-logo.jpeg' alt='image' />
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/dainikbhaskar.png' alt='image' />
-          <motion.img className='h-20 mr-10 w-44 rounded-lg' src='AboutPage_Assets/notion.jpg' alt='image' />
-        </FastMarquee>
-        </>
+      <FastMarquee
+        gradient={false}
+        autoFill={true}
+        direction={props.direction}
+        speed={scrollSpeed} // Dynamically adjust speed based on scroll
+        className={`py-3 bg-green-950 ${props.margin}`}
+      >
+        {/* Example images */}
+        {sponsorsLogo.map((item,index)=>{
+          return(
+            <React.Fragment key={index}>
+              <motion.img className='h-16 mr-10 w-36 rounded-md' src={`${item.logo}`} alt='image' />
+            </React.Fragment>
+          )
+        })}
+      </FastMarquee>
+    </>
   );
 };
 

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
 import { useForm } from 'react-hook-form';
-import { animate, motion } from "framer-motion";
+import axios from "axios";
+import { motion } from "framer-motion";
+import './FormSponsors.css'
 
 const FormSponsors = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -42,7 +44,7 @@ const FormSponsors = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex h-90 flex-col w-full gap-8 items-start ">
+    <form onSubmit={handleSubmit(onSubmit)} className="hide-on-small flex h-90 flex-col w-full gap-8 items-start ">
       <motion.div
         animate={{ y: isNameClicked ? -10 : 0 }}
         transition={{ duration: 0.5 }}
@@ -54,25 +56,24 @@ const FormSponsors = () => {
         <input className=" text-white bg-inherit focus:outline-none  border-b-2 hover:bg-stone-900 rounded-lg placeholder-white  h-7 p-3 focus:border" placeholder='Name' type="text" {...register('firstName', { required: true })} />
         {errors.firstName && <span>This field is required</span>}
       </motion.div>
-      
-       
-      <div className='contact-info flex gap-20 '>
-      <motion.div
-        animate={{ y: isCompanyClicked ? -10 : 0 }}
-        transition={{ duration: 0.5 }}
-        onClick={handleCompanyClick}
-        variants={itemVariants}
-        className=""
-      >
-        <input
-          className="text-white bg-inherit focus:outline-none border-b-2 hover:bg-stone-900 rounded-lg placeholder-white h-7 p-3 focus:border"
-          placeholder="Company"
-          type="text"
-          {...register('company', { required: true })}
-        />
-        {errors.company && <span>This field is required</span>}
-      </motion.div>
-      <motion.div
+      <div className=' contact-info flex lg:flex-row sm:flex-col sm:gap-7 lg:gap-12 '>
+        <motion.div
+          animate={{ y: isCompanyClicked ? -10 : 0 }}
+          transition={{ duration: 0.5 }}
+          onClick={handleCompanyClick}
+          variants={itemVariants}
+          className=""
+        >
+          <input
+            className="text-white bg-inherit focus:outline-none border-b-2 hover:bg-stone-900 rounded-lg placeholder-white h-7 p-3 focus:border"
+            placeholder="Company"
+            type="text"
+            {...register('company', { required: true })}
+          />
+          {errors.company && <span>This field is required</span>}
+        </motion.div>
+        <motion.div
+
           animate={{ y: isPhoneClicked ? -10 : 0 }}
           transition={{ duration: 0.5 }}
           onClick={handlePhoneClick}
@@ -89,23 +90,23 @@ const FormSponsors = () => {
           {errors.phoneNumber?.type === 'pattern' && <span>Phone number should be 10 digits</span>}
 
         </motion.div>
-       
       </div>
       <motion.div
-          animate={{ y: isEmailClicked ? -10 : 0 }}
-          transition={{ duration: 0.5 }}
-          onClick={handleEmailClick}
-          variants={itemVariants}
-          className="w-full h-7 flex  "
-        >
-          <input
-            className="text-white bg-inherit focus:outline-none border-b-2 hover:bg-stone-900 rounded-lg placeholder-white w-3/4 h-7 p-3 focus:border "
-            placeholder="Email"
-            type="email"
-            {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-          />
-          {errors.email && <span>Please enter a valid email address</span>}
-        </motion.div>
+        animate={{ y: isEmailClicked ? -10 : 0 }}
+        transition={{ duration: 0.5 }}
+        onClick={handleEmailClick}
+        variants={itemVariants}
+        className="md:w-[133%] sm:w-[130%] h-7 flex email   "
+      >
+        <input
+          className="text-white bg-inherit focus:outline-none border-b-2 hover:bg-stone-900 rounded-lg placeholder-white w-3/4 h-7 p-3 focus:border "
+          placeholder="Email"
+          type="email"
+          {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+        />
+        {errors.email && <span>Please enter a valid email address</span>}
+      </motion.div>
+
       <motion.div
         animate={{ y: isMessageClicked ? -10 : 0 }}
         transition={{ duration: 0.5 }}

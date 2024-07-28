@@ -71,7 +71,7 @@ export const departments = [
       {
         name: "Ayushman Kumar Singh",
         role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/android_/Ayushman_Kumar_Singh_Core_Member.jpg",
       },
       {
         name: "Prathmay Awasthi",
@@ -176,7 +176,7 @@ export const departments = [
       {
         name: "Aryan Kumar Singh",
         role: "Core Member",
-        image: "TeamPage_Assets/clubMembers_photos/pr/ARYAN DESAI CORE MEMBER.jpg",
+        image: "TeamPage_Assets/clubMembers_photos/pr/Aryan Kumar Singh __ core member.jpeg",
       },
       {
         name: "Aditya Shukla",
@@ -196,7 +196,7 @@ export const departments = [
       {
         name: "Aryan Desai",
         role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/pr/ARYAN DESAI CORE MEMBER.jpg",
       },
       {
         name: "Aditi Dixit",
@@ -336,7 +336,7 @@ export const departments = [
       {
         name: "Ananth Krishna Rambhatla",
         role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
+        image: "TeamPage_Assets/clubMembers_photos/design-ui/ANANTH CORE MEMBER.jpg",
       },
      
     ],
