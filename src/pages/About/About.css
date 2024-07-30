@@ -1,7 +1,4 @@
-
-
 .page {
-  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #E6F1E8;
@@ -9,7 +6,6 @@
 }
 
 .title {
-  font-size: 2em;
   margin-bottom: 10px; 
   color: #254336; 
   text-align: center;
@@ -83,6 +79,10 @@
   .About-para,
   .Mission-para {
       font-size: 0.9em;
+  }
+
+  .set-col{
+    flex-direction: column;
   }
 
   .container {
@@ -168,7 +168,7 @@
 
 .speech {
   
-  font-size: 1.2em;
+  font-size: 1em;
   
   background: #d8f4dd;
 

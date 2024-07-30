@@ -29,7 +29,7 @@ const Testimonials = () => {
               <div className="flex mt-8 items-start">
                 <img
                   className="w-12 h-12 mr-6 rounded-full border border-neutral-300"
-                  src={testimonial.image}
+                  src={`${testimonial.image}`}
                   alt=""
                 />
                 <div>

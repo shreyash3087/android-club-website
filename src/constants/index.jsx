@@ -5,8 +5,8 @@ import { ShieldHalf } from "lucide-react";
 import { PlugZap } from "lucide-react";
 import { GlobeLock } from "lucide-react";
 
-import user1 from "../assets/profile-pictures/user1.jpg";
-import user2 from "../assets/profile-pictures/user2.jpg";
+// import user1 from "../assets/profile-pictures/Giriraj.jpg";
+// import user2 from "../";
 import user3 from "../assets/profile-pictures/user3.jpg";
 import user4 from "../assets/profile-pictures/user4.jpg";
 import user5 from "../assets/profile-pictures/user5.jpg";
@@ -21,40 +21,40 @@ export const navItems = [
 
 export const testimonials = [
   {
-    user: "John Doe",
-    company: "Stellar Solutions",
-    image: user1,
-    text: "I am extremely satisfied with the services provided. The team was responsive, professional, and delivered results beyond my expectations.",
+    user: "Giriraj Parsewar",
+    company: "Admin (Vice President)",
+    image:"TeamPage_Assets/clubMembers_photos/admin/Giriraj.jpg" ,
+    text: "IDE that we work on is Innovation, Determination and Enthusiasm! As nothing hinders us in this incessant quest for learning and growth.. Lets Code, create, and conquer in our style!!",
   },
   {
-    user: "Jane Smith",
-    company: "Blue Horizon Technologies",
-    image: user2,
-    text: "I couldn't be happier with the outcome of our project. The team's creativity and problem-solving skills were instrumental in bringing our vision to life",
+    user: "Avyaan Verma",
+    company: "Admin (Secretary)",
+    image: "TeamPage_Assets/clubMembers_photos/admin/Avyaan.jpg",
+    text: "A place more than a groupof developers and enthusiasts, with people who cares, guides and inspires.",
   },
   {
-    user: "David Johnson",
-    company: "Quantum Innovations",
-    image: user3,
-    text: "Working with this company was a pleasure. Their attention to detail and commitment to excellence are commendable. I would highly recommend them to anyone looking for top-notch service.",
+    user: "Antareep Dey",
+    company: "Operations (Lead)",
+    image: "TeamPage_Assets/clubMembers_photos/admin/AntareepDey_operations_lead.png",
+    text: "Stepping into the Android Club in 2nd semester transformed my university experience. With tons of awesome events and incredible people, this club is where I've grown the most. It’s truly the place to be!",
   },
   {
-    user: "Ronee Brown",
-    company: "Fusion Dynamics",
-    image: user4,
-    text: "Working with the team at XYZ Company was a game-changer for our project. Their attention to detail and innovative solutions helped us achieve our goals faster than we thought possible. We are grateful for their expertise and professionalism!",
+    user: "Samriddhi Tripathi",
+    company: "Operations (Managers)",
+    image: "TeamPage_Assets/clubMembers_photos/admin/Samriddhi Tripathi_ Operations Manager.jpg",
+    text: "I am deeply honored and grateful for the opportunity to serve for our esteemed Android Club. This club has given me a chance to contribute to the growth and success of our dynamic community.",
   },
   {
-    user: "Michael Wilson",
-    company: "Visionary Creations",
-    image: user5,
-    text: "I am amazed by the level of professionalism and dedication shown by the team. They were able to exceed our expectations and deliver outstanding results.",
+    user: "Sparsh Tiwari",
+    company: "Technical (co-Lead)",
+    image: "TeamPage_Assets/clubMembers_photos/admin/Sparsh Tiwari.jpg",
+    text: "Addressing edge cases alone won't resolve complex issues. Dive deeper with our Android club, where we tackle advanced challenges, optimize code, and refine solutions for real-world applications.",
   },
   {
-    user: "Emily Davis",
-    company: "Synergy Systems",
-    image: user6,
-    text: "The team went above and beyond to ensure our project was a success. Their expertise and dedication are unmatched. I look forward to working with them again in the future.",
+    user: "Ujjawal Patidar",
+    company: "SDC (Lead)",
+    image: "TeamPage_Assets/clubMembers_photos/sdc/Ujjawal_SDC_Lead.jpg",
+    text: "I am proud to be part of such an outstanding and dynamic community. The dedication and enthusiasm of our members make this club a truly exceptional place for growth and innovation.",
   },
 ];
 

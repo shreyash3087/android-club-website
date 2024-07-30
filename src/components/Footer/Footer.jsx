@@ -230,7 +230,7 @@ const Footer = () => {
                 <span className="ion-logo-ionic mr-2"></span>Hacker Earth
               </a>
               <a
-                href="https://www.techbrain.com.au/"
+                href="https://techbairn.co.in/index.html"
                 className="flex items-center"
                 target="__blank"
               >
