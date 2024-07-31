@@ -38,10 +38,10 @@ export const testimonials = [
     text: "I am deeply honored and grateful for the opportunity to serve for our esteemed Android Club. This club has given me a chance to contribute to the growth and success of our dynamic community.",
   },
   {
-    user: "Sparsh Tiwari",
-    company: "Technical (co-Lead)",
-    image: "TeamPage_Assets/clubMembers_photos/admin/Sparsh Tiwari.jpg",
-    text: "Addressing edge cases alone won't resolve complex issues. Dive deeper with our Android club, where we tackle advanced challenges, optimize code, and refine solutions for real-world applications.",
+    user: "Amrutha Duvvuri",
+    company: "Event Management  (Lead)",
+    image: "TeamPage_Assets/clubMembers_photos/evm/LAKSHMI AMRUTHA DUVVURI_LEAD.jpg",
+    text: "Geek out, level up, and have a blast! With this motto, we strive to bring out the inner child within us while we plan, execute, and participate in our events. That's how we roll! As Bollywood's famous dialogue says, 'Mogambo khush hua,' we too find joy in every challenge we conquer and every memory we create together.",
   },
   {
     user: "Ujjawal Patidar",

@@ -13,14 +13,14 @@ export const departments = [
         name: "Giriraj Pradeep Parsewar",
         role: "Vice President",
         image: "TeamPage_Assets/clubMembers_photos/admin/Giriraj.jpg",
-         unicode : "đřǿ",
-        
+        unicode: "đřǿ",
+
       },
       {
         name: "Avyaan Verma",
         role: "General Secretary",
         image: "TeamPage_Assets/clubMembers_photos/admin/Avyaan.jpg",
-         unicode : "ĩđ",
+        unicode: "ĩđ",
       },
     ],
   },
@@ -122,6 +122,11 @@ export const departments = [
         name: "Shreyash Srivastava",
         role: "Core Member",
         image: "TeamPage_Assets/clubMembers_photos/sdc/Shreyash Srivastava_Core Member.jpeg",
+      },
+      {
+        name: "Mehul Singh",
+        role: "Core Member",
+        image: "TeamPage_Assets/user icon.png",
       },
     ],
   },
@@ -338,7 +343,7 @@ export const departments = [
         role: "Core Member",
         image: "TeamPage_Assets/clubMembers_photos/design-ui/ANANTH CORE MEMBER.jpg",
       },
-     
+
     ],
   },
   {
@@ -347,11 +352,6 @@ export const departments = [
       {
         name: "Prashasti Priya",
         role: "Lead",
-        image: "TeamPage_Assets/user icon.png",
-      },
-      {
-        name: "Mehul Singh",
-        role: "Core Member",
         image: "TeamPage_Assets/user icon.png",
       },
       {
@@ -369,11 +369,6 @@ export const departments = [
         role: "Core Member",
         image: "TeamPage_Assets/clubMembers_photos/content/MANSA SAXENA_CORE MEMBER.jpg",
       },
-      {
-        name: "Nischal Gupta ",
-        role: "Core Member",
-        image: "TeamPage_Assets/user icon.png",
-      },
     ],
   },
   {
@@ -388,11 +383,6 @@ export const departments = [
         name: "Shrestha Jaiswal",
         role: "Core Member",
         image: "TeamPage_Assets/user icon.png",
-      },
-      {
-        name: "Priyanshi Mahajan",
-        role: "Core Member",
-        image: "",
       },
       {
         name: "Harshwardhan Verma",
@@ -415,7 +405,7 @@ export const departments = [
     name: "Media Team",
     admins: [
       {
-        name: "Vinit Karleka",
+        name: "Vinit Karlekar",
         role: "Lead",
         image: "TeamPage_Assets/clubMembers_photos/media/Vinit_Media Lead.jpg",
       },
