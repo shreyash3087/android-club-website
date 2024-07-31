@@ -97,9 +97,9 @@ const ContactUs = () => {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <div className=" content md:gap-5  margin_small w-3/5 md:h-full  flex items-center justify-center">
-                <h3 className='md:text-2xl md:font-medium sm:text-xl mt-3 '>Explore Sponsorship Opportunities with Us!</h3>
-                <span className='sm:text-sm md:text-md mt-7'>
+              <div className=" content  margin_small w-3/5 md:h-full  flex items-center justify-center">
+                <h3 className='md:text-2xl font-semibold sm:text-xl mt-3 '>Explore Sponsorship Opportunities with Us!</h3>
+                <span className='text-[110%] mt-7'>
                   Your contributions help us foster innovation and learning among aspiring developers. For sponsorship opportunities and collaborations, reach out to us:
                 </span>
                 <div className="contact-info mt-5 flex flex-col md:gap-2 lg:gap-5 text-black lg:text-lg md:text-md">
@@ -138,7 +138,7 @@ const ContactUs = () => {
           {/* sponsors form block to be hidden on bigger screen above 650px */}
           <div className='hide-on-bigger sm:hidden text-[#254336]   p-3 flex flex-col justify-center items-center'>
             <h3 className='text-2xl font-medium  mt-3 text-[#254336]'>Explore Sponsorship Opportunities with Us!</h3>
-            <span className='sm:text-sm md:text-md mt-7'>
+            <span className='sm:text-sm md:text-base mt-7'>
               Your contributions help us foster innovation and learning among aspiring developers. For sponsorship opportunities and collaborations, reach out to us:
             </span>
             <div
@@ -178,7 +178,7 @@ const ContactUs = () => {
             <p className='text-md'>We’d love to hear from you! Please complete the form below to submit your suggestions or queries.</p>
           </div>
         </div>
-       <div className='hide-on-small height-small form flex flex-row w-full sm:h-screen sm:mt-40 relative margin-small col-small'>
+       <div className='hide-on-small height-small form flex flex-row w-full sm:h-screen sm:mt-48 relative margin-small col-small'>
           <div className=" hide-on-small map overflow-hidden w-full relative m-5 flex-grow ">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.5357352577967!2d76.8487121738678!3d23.07747641427975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397ce9ceaaaaaaab%3A0xa224b6b82b421f83!2sVIT%20Bhopal%20University!5e0!3m2!1sen!2sin!4v1719466708681!5m2!1sen!2sin"
               className='h-full w-full'
@@ -191,7 +191,7 @@ const ContactUs = () => {
           <GeneralFormA/>
           </div>
        </div>
-          <div className=' show-on-small mt-[30%] sm:hidden h-full text-[#254336] flex flex-col justify-center items-center gap-3 '>
+          <div className=' show-on-small mt-[20%] sm:hidden h-full text-[#254336] flex flex-col justify-center items-center gap-3 '>
             <h3 className='text-3xl  font-normal'>We welcome your suggestions and feedback!</h3>
             <p className='text-md'>We’d love to hear from you! Please complete the form below to submit your suggestions or queries.</p>
             <GeneralFormB />

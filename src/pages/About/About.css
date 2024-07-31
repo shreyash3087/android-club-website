@@ -1,0 +1,200 @@
+.page {
+  margin: 0;
+  padding: 0;
+  background-color: #E6F1E8;
+  color: #254336;
+}
+
+.title {
+  margin-bottom: 10px; 
+  color: #254336; 
+  text-align: center;
+}
+
+.About-section,
+.Faculty-section,
+.Our-story,
+.Mission-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #CDE5D6; /* Light greenish */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+.Our-story {
+  position: relative;
+  background: url('/Events_Page/DSA_Tussle/img4.jpg') no-repeat center center;
+  background-size: cover;
+  color: white; 
+  padding: 20px;
+}
+
+.Our-story::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 128, 0, 0.3); 
+  background: linear-gradient(to bottom, rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)); 
+  z-index: 1;
+  pointer-events: none;
+}
+
+.Our-story .title,
+.Our-story .About-para {
+  position: relative;
+  z-index: 2;
+}
+
+.About-para,
+.Mission-para {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: inherit; 
+  margin-top: 0; 
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+      font-size: 1.5em;
+  }
+
+  .About-para,
+  .Mission-para {
+      font-size: 0.9em;
+  }
+
+  .set-col{
+    flex-direction: column;
+  }
+
+  .container {
+      padding: 10px;
+  }
+}
+
+.Our-story .title{
+  color: white;
+}
+
+.About-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  background-color: #E6F1E8; /* Adjust if you need a different background */
+  padding: 20px;
+}
+
+.About-section img {
+  flex-shrink: 0;
+  max-width: 50%;
+  height: auto; /* Ensure the image maintains its aspect ratio */
+  margin-left: 20px;
+}
+
+.About-section a,
+.About-section box-icon {
+  margin-right: 10px;
+  color: #254336;
+}
+
+.About-section a {
+  display: inline-block;
+}
+
+.About-section box-icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.About-section .social-icons {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+
+
+.Faculty-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b2f0ca; /* Dark green/black for blackboard effect */
+  
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
+  position: relative;
+}
+
+.Faculty-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Slight texture effect */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.Faculty-section .title,
+.Faculty-section .About-para {
+  position: relative;
+  z-index: 2;
+  color: #254336;
+}
+
+
+.speech {
+  
+  font-size: 1em;
+  
+  background: #d8f4dd;
+
+ 
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.speech::after {
+  display: block; width: 0; content: "";
+  border: 15px solid transparent;
+}
+
+.speech.left::after {
+  border-right-color: #d8f4dd;
+  border-left: 0;
+}
+
+.speech {
+  position: relative;
+  margin: 30px;
+}
+
+.speech::after { position: absolute; }
+
+.speech.left::after {
+  left: -15px; top: calc(35% - 15px);
+}
