@@ -18,7 +18,7 @@ const Testimonials = () => {
       <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center my-10 lg:my-20">
       Message from{" "}
         <span className="text-[#3ab680]">
-          The Team-Leads{" "}
+          The Core-Members{" "}
         </span>
       </h2>
       <div className="flex flex-wrap justify-center w-[80%]">
