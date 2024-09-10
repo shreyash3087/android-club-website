@@ -32,7 +32,9 @@ const ScrollingImages = (props) => {
         {sponsorsLogo.map((item,index)=>{
           return(
             <React.Fragment key={index}>
-              <motion.img className='h-16 mr-10 w-36 rounded-md' src={`${item.logo}`} alt='image' />
+              <div className='bg-white h-28 overflow-hidden flex justify-center items-center'>
+              <motion.img className='mr-10 w-36 rounded-md' src={`${item.logo}`} alt='image' />
+              </div>
             </React.Fragment>
           )
         })}

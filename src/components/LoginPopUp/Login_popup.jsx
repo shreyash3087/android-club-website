@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useContext, useRef } from "react";
 import * as Components from "./login_style";
-import { StoreContext } from "../../context/StoreContext";
-import axios from "axios";
+import { useFirestore } from "../../context/firestoreContext";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login_popup = ({ closePopup, initialSignIn }) => {
   const [signIn, toggle] = useState(initialSignIn);
@@ -12,72 +13,62 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
     name: "",
     email: "",
     password: "",
+    phone: "",   
+    regNo: "",    
+    isVITStudent: false, 
   });
 
+  const { registerUser, loginUser } = useFirestore();
+
   const onChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setData((data) => ({ ...data, [name]: value }));
+    const { name, value } = event.target;
+    setData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const { url, setToken } = useContext(StoreContext);
+  const onCheckboxChange = (event) => {
+    setData((prevData) => ({
+      ...prevData,
+      isVITStudent: event.target.checked, 
+      regNo: event.target.checked ? prevData.regNo : "",
+    }));
+  };
 
   const onLogin = async (event) => {
     event.preventDefault();
-    let newUrl = `${url}/api/user/login`;
-
     try {
-      const response = await axios.post(newUrl, data);
-      if (response.data.success) {
-        setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
-        console.log("Successfully Logged In");
-        handleClose();
-      } else {
-        alert(response.data.message);
-      }
+      await loginUser(data.email, data.password);
+      toast.success("Successfully Logged In");
+      handleClose();
     } catch (error) {
       console.error("Error logging in", error);
-      alert("An error occurred. Please try again.");
+      toast.error("Failed to log in. Please check your credentials.");
     }
   };
 
   const onSignup = async (event) => {
     event.preventDefault();
-    let newUrl = `${url}/api/user/register`;
-
     try {
-      const response = await axios.post(newUrl, data);
-      if (response.data.success) {
-        setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
-        console.log("Successfully Signed Up");
-        handleClose();
-      } else {
-        alert(response.data.message);
-      }
+      console.log('Data:', data);
+      const additionalData = {
+        name: data.name,
+        phone: data.phone,
+        regNo: data.isVITStudent ? data.regNo : "",
+        isVITStudent: data.isVITStudent,
+      };
+
+      await registerUser(data.email, data.password, additionalData);
+      toast.success("Successfully Signed Up");
+      handleClose();
     } catch (error) {
       console.error("Error signing up", error);
-      alert("An error occurred. Please try again.");
+      // Check if user already exists
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("User already exists. Please log in.");
+      } else {
+        toast.error("Failed to sign up. Please try again.");
+      }
     }
   };
-
-  useEffect(() => {
-    toggle(initialSignIn);
-  }, [initialSignIn]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
-        handleClose();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -87,8 +78,9 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
   };
 
   return (
-    <div className="fixed top-16 left-0 w-full h-full flex justify-center items-center max-xl:w-full">
+    <div className="fixed top-16 left-0 w-full h-full flex justify-center items-center max-xl:w-full z-[100]">
       <div className="bg-none w-full h-full rounded-lg">
+        <ToastContainer />
         <Components.PageWrapper>
           <Components.Container ref={containerRef} $isClosing={isClosing}>
             <Components.CloseButton onClick={handleClose} $signinIn={signIn}>
@@ -119,6 +111,33 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
                   type="password"
                   placeholder="Password"
                 />
+                <Components.Input
+                  name="phone"
+                  onChange={onChangeHandler}
+                  value={data.phone}
+                  type="tel"
+                  placeholder="Phone Number"
+                  required
+                />
+                <div>
+                  <input
+                    type="checkbox"
+                    checked={data.isVITStudent}
+                    onChange={onCheckboxChange}
+                  />
+                  <label className="text-black">Are you a VIT student?</label>
+                </div>
+                {data.isVITStudent && (
+                  <Components.Input
+                    name="regNo"
+                    onChange={onChangeHandler}
+                    value={data.regNo}
+                    type="text"
+                    placeholder="Registration Number"
+                    required={data.isVITStudent}
+                  />
+                )}
+                
                 <Components.Anchor2 onClick={() => toggle(true)}>
                   Already Have An Account?
                 </Components.Anchor2>

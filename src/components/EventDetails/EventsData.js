@@ -1,17 +1,18 @@
-const EventsData = [
+const eventsData = [
   {
     id: "event1",
     name: "Android Fusion",
-    posterUrl: "/Events_Page/Android_Fusion/AndroidFusion.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FAndroid_Fusion%2FAndroidFusion.jpg?alt=media&token=2638ad58-e159-4e0e-8971-e088061bf9ce",
     description: "Android Fusion was an immersive event that delved into the integration of Android development, Internet of Things (IoT), and Machine Learning (ML). Participants engaged in hands-on sessions, developing Android applications that interfaced with IoT devices and leveraged ML algorithms. The event featured technical speaker sessions from our club's tech experts, providing deep insights into each part of the integration. Attendees also had the opportunity to network with fellow tech enthusiasts, fostering collaborations and exchanging innovative ideas within the tech community.",
     venue: "LC-205",
     startDatetime: "2024-05-09T09:00",
     endDatetime: "2024-05-09T16:20",
+    
   },
   {
     id: "event2",
     name: "DSA Tussle",
-    posterUrl: "/Events_Page/DSA_Tussle/DSA_Tussle.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FDSA%20Tussle%2FDSA_Tussle.jpg?alt=media&token=1a8d12ef-0454-4d67-90cb-e33d7a722050",
     description: "DSA Tussle was an exhilarating day of coding brilliance hosted by the Android Club. The event featured mind-bending problem-solving sessions and epic coding showdowns that kept participants on the edge of their seats. It was a showcase of talent and skill in data structures and algorithms (DSA), where coders competed to solve complex problems under time constraints. The event was a huge success, thanks to the incredible participants who made it unforgettable with their enthusiasm and expertise.",
     venue: "AB-420",
     startDatetime: "2024-02-22T11:00",
@@ -20,7 +21,7 @@ const EventsData = [
   {
     id: "event3",
     name: "Meet and Greet",
-    posterUrl: "/Events_Page/Meet_and_Greet/Meet_and_greet.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FMeet%20and%20Greet%2FMeet_and_greet.jpg?alt=media&token=1b1bda2a-1ed2-479b-901d-36802b4b66ed",
     description: "Meet and Greet: Android Club Edition was a dynamic event held on October 11th, 2023, designed to ignite participants' passion for technology. This 3-hour session brought together tech rookies and coding ninjas alike for an epic exploration of Android and Software Development. Attendees experienced a blend of inspiration, interaction, innovation, and networking, making it a memorable gathering for everyone involved. The event provided a unique platform for participants to engage with fellow tech enthusiasts, share knowledge, and build valuable connections within the tech community.",
     venue: "Auditorium",
     startDatetime: "2023-10-11T09:00",
@@ -29,7 +30,7 @@ const EventsData = [
   {
     id: "event4",
     name: "Cultural Craft",
-    posterUrl: "/Events_Page/Other_Events/CulturalCraft.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FCultural%20Craft%2FCulturalCraft.jpg?alt=media&token=c9924ab6-aac6-40a9-9802-056eb221e915",
     description: "Cultural Craft was the ultimate 4-hour development challenge that brought together innovation and cultural exploration. Participants unleashed their coding wizardry in various categories, including software development, game development, poster designing, and video editing. This exciting event was a fusion of culture and technology, encouraging teams of up to four members to showcase their skills, ignite innovation, and push their limits. It was a memorable tech showdown that highlighted the diverse talents and creativity of all participants.",
     venue: "Auditorium",
     startDatetime: "2023-07-31T09:30",
@@ -38,7 +39,7 @@ const EventsData = [
   {
     id: "event5",
     name: "Andro Series 2.0",
-    posterUrl: "/Events_Page/AndroSeries2/AndroSeries2.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FAndro%20Series%202.0%2FAndroSeries2.jpg?alt=media&token=9a6553a0-8dd3-4679-9642-93795046b922",
     description: "Andro-Series 2.0, organized by the Android Club of VIT Bhopal in association with Coding Ninjas, was an exclusive online webinar focused on Android Architecture. The session was led by Abhishek Raj, a Jaguar software engineer and former Samsung SDE, who is also an IIT Dhanbad CS graduate. With a passion for mentoring, Abhishek has guided over 5000 students to date. This free webinar provided participants with in-depth insights into how Android architecture works. Attendees received certificates and ODs for the session held from 10:00 am to 11:40 am, making it an enriching experience to elevate their knowledge and skills in the Android development world.",
     venue: "Online",
     startDatetime: "2023-06-26T10:00",
@@ -47,7 +48,7 @@ const EventsData = [
   {
     id: "event6",
     name: "Bug Off",
-    posterUrl: "/Events_Page/Bug_Off/Bug Off.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FBug%20Off%2FBug%20Off.jpg?alt=media&token=b58bdaaa-d680-455c-ae7a-44f2ebf7e18f",
     description:"",
     venue: "Auditorium",
     startDatetime: "2023-05-15T09:00",
@@ -56,7 +57,7 @@ const EventsData = [
   {
     id: "event7",
     name: "Front-End Sprint",
-    posterUrl: "/Events_Page/Other_Events/Front_End_Sprint.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FFront-End%20Sprint%2FFront_End_Sprint.jpg?alt=media&token=2f648cd4-adf4-4fc6-bb4b-e3a2ead7ebea",
     description:"",
     venue: "Auditorium",
     startDatetime: "2023-04-10T09:45",
@@ -74,7 +75,7 @@ const EventsData = [
   {
     id: "event9",
     name: "App-A-Thon",
-    posterUrl: "/Events_Page/App_A_Thon/App_A_Thon.jpg",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FApp-A-Thon%2FApp_A_Thon.jpg?alt=media&token=a5c8d9d2-2891-4da4-8477-7ad3b711722b",
     description:"",
     venue: "Auditorium",
     startDatetime: "2022-12-24T08:00",
@@ -82,8 +83,8 @@ const EventsData = [
   },
   {
     id: "event10",
-    name: "Code-Raid",
-    posterUrl: "/Events_Page/Other_Events/Code-Roid.png",
+    name: "Code-Roid",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FCode-Roid%2FCode-Roid.png?alt=media&token=d06826f5-4544-46bd-931e-93c6f91b1e0c",
     description:"",
     venue: "Auditorium",
     startDatetime: "2022-04-22T10:00",
@@ -101,7 +102,7 @@ const EventsData = [
   {
     id: "event12",
     name: "V-Code",
-    posterUrl: "/Events_Page/Other_Events/V-Code.png",
+    posterUrl: "https://firebasestorage.googleapis.com/v0/b/android-club-4c1ab.appspot.com/o/Events%2FV-Code%2FV-Code.png?alt=media&token=93e2a504-0b22-4b4b-934f-3d1335381ae8",
     description:"",
     venue: "Auditorium",
     startDatetime: "2019-03-29T11:00",
@@ -127,4 +128,5 @@ const EventsData = [
   },
 ];
 
-export default EventsData;
+
+export default eventsData;

@@ -10,30 +10,30 @@ import {
   isSameMonth,
   isToday,
   parse,
-  parseISO,
   startOfToday,
   startOfMonth,
 } from "date-fns";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import EventsData from "../EventDetails/EventsData";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+const Calendar = ({ eventsData }) => {
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
   const navigate = useNavigate();
 
+  // Get the days of the current month
   let days = eachDayOfInterval({
     start: firstDayCurrentMonth,
     end: endOfMonth(firstDayCurrentMonth),
   });
 
+  // Handlers for changing months
   function previousMonth() {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
@@ -44,6 +44,7 @@ export default function Example() {
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   }
 
+  // Handler for navigating to the previous event month
   function previousEventMonth() {
     let previousMonthDate = add(firstDayCurrentMonth, { months: -1 });
     while (!hasEvents(previousMonthDate)) {
@@ -56,6 +57,7 @@ export default function Example() {
     setCurrentMonth(format(previousMonthDate, "MMM-yyyy"));
   }
 
+  // Handler for navigating to the next event month
   function nextEventMonth() {
     let nextMonthDate = add(firstDayCurrentMonth, { months: 1 });
     while (!hasEvents(nextMonthDate)) {
@@ -68,15 +70,17 @@ export default function Example() {
     setCurrentMonth(format(nextMonthDate, "MMM-yyyy"));
   }
 
+  // Check if the given month has events
   function hasEvents(date) {
-    const monthEvents = EventsData.filter((event) =>
-      isSameMonth(parseISO(event.startDatetime), date)
+    const monthEvents = eventsData.filter((event) =>
+      isSameMonth(parse(event.date, "dd/MM/yyyy", new Date()), date)
     );
     return monthEvents.length > 0;
   }
 
-  let currentMonthEvents = EventsData.filter((event) =>
-    isSameMonth(parseISO(event.startDatetime), firstDayCurrentMonth)
+  // Get events for the current month
+  let currentMonthEvents = eventsData.filter((event) =>
+    isSameMonth(parse(event.date, "dd/MM/yyyy", new Date()), firstDayCurrentMonth)
   );
 
   return (
@@ -160,8 +164,8 @@ export default function Example() {
                   </button>
 
                   <div className="w-1 h-1 mx-auto mt-1">
-                    {EventsData.some((event) =>
-                      isSameDay(parseISO(event.startDatetime), day)
+                    {eventsData.some((event) =>
+                      isSameDay(parse(event.date, "dd/MM/yyyy", new Date()), day)
                     ) && (
                       <div className="w-1 h-1 rounded-full bg-sky-500"></div>
                     )}
@@ -177,7 +181,7 @@ export default function Example() {
             <ol className="pl-4 pr-4 space-y-1 leading-6 text-2xl font-bold text-white">
               {currentMonthEvents.length > 0 ? (
                 currentMonthEvents.map((event) => (
-                  <Events event={event} key={event.id} navigate={navigate} />
+                  <Events event={event} key={event.notificationGroup} navigate={navigate} />
                 ))
               ) : (
                 <p>No events in this month.</p>
@@ -202,17 +206,13 @@ export default function Example() {
       </div>
     </div>
   );
-}
+};
 
 function Events({ event, navigate }) {
-  let startDateTime = parseISO(event.startDatetime);
-  let endDateTime = parseISO(event.endDatetime);
+  let eventDateTime = parse(`${event.date} ${event.time}`, "dd/MM/yyyy HH:mm", new Date());
 
   const handleEventClick = () => {
-    const eventIdNumber = parseInt(event.id.replace("event", ""), 10);
-    if (eventIdNumber >= 1 && eventIdNumber <= 5) {
-      navigate(`/events/${event.id}`);
-    }
+    navigate(`/events/${event.notificationGroup}`);
   };
 
   return (
@@ -222,13 +222,11 @@ function Events({ event, navigate }) {
     >
       <div className="flex-auto">
         <p className="mt-0.5 text-sm text-center">
-          <time dateTime={event.startDatetime}>
-            {format(startDateTime, "MMMM yyyy, dd")} {"( "}{" "}
-            {format(startDateTime, "h:mm a")}
-          </time>{" "}
-          {" - "}
-          <time dateTime={event.endDatetime}>{format(endDateTime, "h:mm a")}</time>{" "}
-          {")"}
+          <time dateTime={eventDateTime.toISOString()}>
+            {format(eventDateTime, "MMMM yyyy, dd")} {"( "}{" "}
+            {format(eventDateTime, "h:mm a")}
+          </time>
+          {") "}
         </p>
         <p className="mt-1">{event.name}</p>
       </div>
@@ -245,3 +243,5 @@ let colStartClasses = [
   "col-start-6",
   "col-start-7",
 ];
+
+export default Calendar;

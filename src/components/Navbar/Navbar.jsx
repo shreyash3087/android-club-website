@@ -1,16 +1,20 @@
 import { Menu, X } from "lucide-react";
 import logo2 from "/src/assets/logo2.png";
 import { navItems } from "/src/constants";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Login_popup from "../LoginPopUp/Login_popup";
-import { StoreContext } from "../../context/StoreContext";
+import { useFirestore } from "../../context/firestoreContext";
 import { useNavigate } from "react-router-dom";
-import profile_icon from "/src/assets/profile_icon.png";
+import ProfilePopup from "../ProfilePopup/ProfilePopup";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+  const [profilePopupVisible, setProfilePopupVisible] = useState(false);
   const [signIn, setSignIn] = useState(true);
+
+  const { user, logoutUser } = useFirestore();
+  const navigate = useNavigate();
 
   const toggleNavbar = () => {
     if (!mobileDrawerOpen) {
@@ -27,18 +31,19 @@ const Navbar = () => {
     setLoginPopupVisible(!loginPopupVisible);
   };
 
-  const { token, setToken } = useContext(StoreContext);
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("token");
-    setToken("");
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      navigate("/");
+    } catch (error) {
+      console.error("Error logging out", error);
+    }
+  };
+
+  const homeButton = () => {
     navigate("/");
   };
 
-  const homeButton=()=>{
-    navigate("/")
-  };
-  
   return (
     <nav className="fixed top-0 z-50 w-full py-3 px-12 border-b backdrop-blur-lg border-neutral-700/80 bg-[#254336]">
       <div className="relative mx-auto lg:text-sm">
@@ -59,7 +64,7 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {!token ? (
+          {!user ? (
             <div className="hidden justify-center items-center space-x-12 max-xl:space-x-4 lg:flex">
               <button
                 onClick={() => toggleLoginPopup(true)}
@@ -75,8 +80,16 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div className="navbar-profile">
-              <img src={profile_icon} onClick={logout} alt="" />
+            <div className="navbar-profile flex items-center space-x-4 max-lg:hidden">
+              <img 
+                src={user.profilePic || "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"} 
+                onClick={() => setProfilePopupVisible(true)} 
+                alt="Profile Icon" 
+                className="cursor-pointer w-8 h-8 rounded-full" 
+              />
+              <button onClick={handleLogout} className="text-white px-4 py-2 rounded-md border border-white">
+                Logout
+              </button>
             </div>
           )}
 
@@ -95,6 +108,17 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
+            <div className="navbar-profile flex items-center space-x-4 my-5">
+              <img 
+                src={user.profilePic || "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"} 
+                onClick={() => setProfilePopupVisible(true)} 
+                alt="Profile Icon" 
+                className="cursor-pointer w-8 h-8 rounded-full" 
+              />
+              <button onClick={handleLogout} className="text-white px-4 py-2 rounded-md border border-white">
+                Logout
+              </button>
+            </div>
             <div className="flex space-x-6">
               <button
                 onClick={() => toggleLoginPopup(true)}
@@ -117,6 +141,9 @@ const Navbar = () => {
           closePopup={() => setLoginPopupVisible(false)}
           initialSignIn={signIn}
         />
+      )}
+      {profilePopupVisible && user && (
+        <ProfilePopup user={user} closePopup={() => setProfilePopupVisible(false)} />
       )}
     </nav>
   );

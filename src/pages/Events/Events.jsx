@@ -5,20 +5,15 @@ import Calendar from "../../components/Calendar/Calendar";
 import PastEvents from "../../components/PastEvents/PastEvents";
 import React, { useState, useEffect, useCallback } from "react";
 import Gallery from "../../components/Gallery/Gallery";
-function Events() {
-  const [upcomingEventTitle, setUpcomingEventTitle] = useState("Code-A-Thon");
-  const [upcomingEventDesc, setUpcomingEventDesc] = useState(
-    "Put your coding skills to test with code-a-thon"
-  );
-  const [upcomingEventFee, setUpcomingEventFee] = useState("$100");
-  const [upcomingEventDate, setUpcomingEventDate] = useState("14/06/2024");
-  const [upcomingEventVenue, setUpcomingEventVenue] = useState("Auditorium");
-
-  //In case of an upcoming event make isUpcomingEvent true and put the details of the event above-
-
-  const [isUpcomingEvent, setIsUpcomingEvent] = useState(false);
+import { format } from "date-fns";
+const Events = ({ eventsData }) => {
   const [isSwiped, setIsSwiped] = useState(false);
-
+  const upcomingEvent = eventsData.find((event) => !event.completion);
+  const formatDate = (dateString) => {
+    const [day, month, year] = dateString.split("/");
+    const parsedDate = new Date(`${year}-${month}-${day}`);
+    return format(parsedDate, "MMMM dd, yyyy");
+  };
   const handleResize = useCallback(() => {
     const heroSection = document.querySelector(".hero_section");
     const mainIsland = document.querySelector(".main_island");
@@ -27,13 +22,13 @@ function Events() {
     const eventHighlights = document.querySelector(".events_highlights");
 
     if (window.innerWidth > window.innerHeight) {
-      eventHighlights.style.height= "600px";
+      eventHighlights.style.height = "600px";
       heroSection.style.height = "100vh";
       mainIsland.style.width = "65%";
       trees.forEach((tree) => (tree.style.width = "20%"));
       clouds.forEach((cloud) => (cloud.style.width = "15%"));
     } else {
-      eventHighlights.style.height= "100vh";
+      eventHighlights.style.height = "100vh";
       heroSection.style.height = "75vh";
       mainIsland.style.width = "100%";
       trees.forEach((tree) => (tree.style.width = "30%"));
@@ -46,7 +41,9 @@ function Events() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [handleResize]);
-
+  const handleRegister = () => {
+    window.location.href = "/registrations";
+  };
   const handleSwipe = () => {
     setIsSwiped(!isSwiped);
   };
@@ -137,7 +134,7 @@ function Events() {
             transition={{ duration: 0.7 }}
             className="calendar"
           >
-            <Calendar />
+            <Calendar eventsData={eventsData} />
           </motion.div>
           <motion.div
             className="calendar_content"
@@ -183,50 +180,70 @@ function Events() {
                   />
                   <img
                     src={
-                      isUpcomingEvent
-                        ? "/Events_Page/demo_event.jpg"
+                      upcomingEvent
+                        ? upcomingEvent.bannerURL || "/Events_Page/noevent.png"
                         : "/Events_Page/noevent.png"
                     }
-                    className="upcoming_event_poster"
+                    className={
+                      upcomingEvent
+                        ? "upcoming_event_poster"
+                        : "no_event_poster"
+                    }
                     alt="event poster"
                   />
-                  {isUpcomingEvent ? (
-                    <button className="register_btn">Register Now</button>
-                  ):<div className="no_event_text">Check Out Our Past Events</div>}
-                </motion.div>
-
-                <motion.div
-                  className="upcoming_events_box"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                >
-                  {isUpcomingEvent ? (
-                    <>
-                      <div className="upcoming_event_name">
-                        {upcomingEventTitle}
-                      </div>
-                      <div className="upcoming_event_desc">
-                        {upcomingEventDesc}
-                      </div>
-                      <div className="upcoming_event_fee">
-                        Registration Fee: {upcomingEventFee}
-                      </div>
-                      <div className="upcoming_event_date">
-                        Date: {upcomingEventDate}
-                      </div>
-                      <div className="upcoming_event_venue">
-                        Venue: {upcomingEventVenue}
-                      </div>
-                    </>
+                  {upcomingEvent ? (
+                    <button className="register_btn" onClick={handleRegister}>
+                      Register Now
+                    </button>
                   ) : (
-                    <p>Oops! No upcoming events</p>
+                    <div className="no_event_text">
+                      Oops! No upcoming events
+                    </div>
                   )}
                 </motion.div>
+
+                {upcomingEvent && (
+                  <motion.div
+                    className="upcoming_events_box"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  >
+                    <div className="upcoming_event_name">
+                      {upcomingEvent.name}
+                    </div>
+                    <div className="upcoming_event_desc">
+                      {upcomingEvent.description
+                        ? `${upcomingEvent.description.substring(0, 200)}... `
+                        : "No description available "}
+                      <span className="text-[#c4c2c2] font-bold text-lg cursor-pointer" onClick={handleRegister}>
+                        {"Read More"}
+                      </span>
+                    </div>
+                    <div className="upcoming_event_fee">
+                      Registration Fee: {upcomingEvent.price || "Free"}
+                    </div>
+                    {upcomingEvent.date && (
+                      <div className="upcoming_event_date">
+                        Date: {formatDate(upcomingEvent.date)}
+                      </div>
+                    )}
+                    {upcomingEvent.time && (
+                      <div className="upcoming_event_time">
+                        Time: {upcomingEvent.time}
+                      </div>
+                    )}
+                    <div className="upcoming_event_venue">
+                      Venue: {upcomingEvent.location || "TBD"}
+                    </div>
+                  </motion.div>
+                )}
+
                 <img
                   src="/Events_Page/Swipe.png"
                   className="swipe_right"
                   onClick={handleSwipe}
+                  alt="Swipe right"
                 />
               </div>
             </>
@@ -250,17 +267,17 @@ function Events() {
                 className="swipe_left"
                 onClick={handleSwipe}
               />
-              <PastEvents/>
+              <PastEvents eventsData={eventsData} />
             </div>
           )}
         </div>
       </div>
       <div className="events_highlights_title">Events Highlights</div>
       <div className="events_highlights">
-        <Gallery/>
+        <Gallery />
       </div>
     </div>
   );
-}
+};
 
 export default Events;

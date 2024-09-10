@@ -29,13 +29,6 @@ const HeroSection = () => {
   return (
     <div>
       <div className="h-screen">
-      <img
-          src="/Loader.png"
-          alt="Loading..."
-          className={`absolute right-4 top-[100px] z-50 w-[640px] transition-opacity duration-500 ease-in-out max-xl:opacity-0 ${
-            splineLoaded ? "opacity-0" : "opacity-100"
-          }`}
-        />
         <Spline
           scene="/scene.splinecode"
           onLoad={handleSplineLoad}

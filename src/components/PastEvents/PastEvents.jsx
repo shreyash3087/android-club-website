@@ -1,4 +1,3 @@
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -6,11 +5,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
-import eventsData from "../EventDetails/EventsData";
-import "./PastEvents.css";
+import './PastEvents.css';
 
-function PastEvents() {
-  const nonEmptyPosterEvents = eventsData.filter(event => event.posterUrl);
+const PastEvents = ({ eventsData }) => {
+  const completedEventsWithBanners = eventsData.filter(
+    (event) => event.bannerURL && event.completion
+  );
 
   return (
     <div className="pastEventsContainer">
@@ -36,10 +36,10 @@ function PastEvents() {
         modules={[EffectCoverflow, Pagination, Navigation]}
         className="swiper_container"
       >
-        {nonEmptyPosterEvents.map((event, index) => (
+        {completedEventsWithBanners.map((event, index) => (
           <SwiperSlide key={index}>
             <Link to={`/events/${event.id}`}>
-              <img src={event.posterUrl} alt={event.title} />
+              <img src={event.bannerURL} alt={event.name} />
             </Link>
           </SwiperSlide>
         ))}

@@ -1,21 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,6 +18,57 @@ a {
 
 }
 
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.no-scroll {
+  overflow: hidden;
+}
+
 .split-bg {
   background: linear-gradient(to bottom, #16A34A 4.7%, #15803D 4.7%);
+}
+
+.textanim {
+  animation: textAnimate 1s;
+}
+
+@keyframes textAnimate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.textanim2{
+  animation: textAnimate2 5s forwards;
+}
+
+@keyframes textAnimate2 {
+  0% {
+    stroke-dasharray: 0 50%;
+  }
+  20% {
+    fill: transparent;
+  }
+  70% {
+    stroke-dasharray: 50% 0;
+  }
+  100% {
+    fill: #fff;
+  }
 }

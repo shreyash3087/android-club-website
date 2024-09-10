@@ -85,7 +85,7 @@ const BlogItem = ({ title, date, tag, img, body }) => {
       </CardHeader>
       <CardContent>
         <img src={img} alt="Article Image" className="w-full h-auto rounded-md" />
-        <p className="mt-4 text-left">{truncateText(body, 35)}</p>
+        <div className="mt-4 text-left" dangerouslySetInnerHTML={{ __html: truncateText(body, 30) }} />
         <Link to={`/blogs/${encodeURIComponent(title)}`} state={{ title, date, tag, img, body }}>
           <Button className="flex flex-start mt-2 px-4 py-2 bg-green-500 text-white font-bold rounded-md transition duration-300 transform hover:scale-105 hover:bg-green-600">
             Read More

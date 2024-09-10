@@ -34,11 +34,11 @@ const About = () => {
 
         <div className="Faculty-section flex flex-col">
           <h1 className="title">Faculty Cooridnator</h1>
-          <div className='set-col flex sm:flex-col md:flex-row justify-center items-center gap-10'>
+          <div className='set-col flex sm:flex-col md:flex-row justify-center items-center max-sm:flex-wrap gap-10'>
             <img
               src="AboutPage_Assets/GanesanSir_C.jpeg"
               alt="Faculty"
-              className='h-64 w-2/5 rounded-lg'
+              className='max-md:h-auto max-md:scale-[2] max-[450px]:scale-[3] my-24  h-64 w-2/5 rounded-lg max-sm:w-full'
             />
             <p className="About-para speech left">
               The Faculty Coordinator of the Android Club plays a pivotal role in

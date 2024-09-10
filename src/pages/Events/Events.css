@@ -248,23 +248,23 @@ body {
   align-items: center;
 }
 .upcoming_events_box {
-  width: 40%;
+  width: 50%;
   margin: 2rem;
   border-radius: 2rem;
   background: #e6f1e83e;
   padding: 2rem;
   color: white;
   font-family: "Lillita", sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 .upcoming_event_name {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 .upcoming_event_desc {
   margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 200;
 }
 .upcoming_event_image {
@@ -272,6 +272,13 @@ body {
   position: relative;
 }
 .upcoming_event_poster {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 85%;
+}
+.no_event_poster {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -284,7 +291,7 @@ body {
 
 .register_btn {
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%);
   margin-top: 1rem;

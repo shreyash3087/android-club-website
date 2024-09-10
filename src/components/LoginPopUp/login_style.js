@@ -44,7 +44,7 @@ export const Container = styled.div`
   overflow: hidden;
   width: 55%;
   max-width: 100%;
-  min-height: 400px;
+  min-height: 500px;
   animation: ${popIn} 0.2s ease-out;
 
   ${(props) =>
@@ -123,7 +123,7 @@ export const Title1 = styled.h1`
   font-weight: bold;
   font-size: 1.5rem;
   color: #447962;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 20px;
 `;
 export const Title2 = styled.h1`
@@ -138,7 +138,7 @@ export const Input = styled.input`
   background-color: #eee;
   color: #447962;
   border: none;
-  padding: 12px 15px;
+  padding: 10px 15px;
   margin: 10px 0;
   width: 100%;
 `;
