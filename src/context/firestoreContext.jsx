@@ -39,7 +39,8 @@ const FirestoreProvider = ({ children }) => {
         phone: additionalData.phone || "",
         profilePic: additionalData.profilePic || "",
         regNo: additionalData.regNo || "",
-        allRegisteredEvents: [], 
+        allRegisteredEvents: [],
+        droid:50, 
       };
   
       await setDoc(doc(firestore, "users", firebaseUser.uid), userProfile);

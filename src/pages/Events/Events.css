@@ -273,7 +273,7 @@ body {
 }
 .upcoming_event_poster {
   position: absolute;
-  top: 65%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -100%);
   width: 85%;

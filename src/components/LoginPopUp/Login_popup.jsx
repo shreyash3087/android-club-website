@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useRef } from "react";
 import * as Components from "./login_style";
 import { useFirestore } from "../../context/firestoreContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,24 +13,38 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
     name: "",
     email: "",
     password: "",
-    phone: "",   
-    regNo: "",    
-    isVITStudent: false, 
+    phone: "",
+    regNo: "",
+    isVITStudent: false,
   });
 
   const { registerUser, loginUser } = useFirestore();
 
-  const onChangeHandler = (event) => {
-    const { name, value } = event.target;
-    setData((prevData) => ({ ...prevData, [name]: value }));
+  const extractRegNoFromEmail = (email) => {
+    const vitDomain = "@vitbhopal.ac.in";
+    
+    if (email.endsWith(vitDomain)) {
+      const match = email.match(/\.([0-9a-zA-Z]+)@vitbhopal\.ac\.in$/);
+      if (match) {
+        return match[1];
+      }
+    }
+    return null; 
   };
 
-  const onCheckboxChange = (event) => {
-    setData((prevData) => ({
-      ...prevData,
-      isVITStudent: event.target.checked, 
-      regNo: event.target.checked ? prevData.regNo : "",
-    }));
+  const onChangeHandler = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "email") {
+      const regNo = extractRegNoFromEmail(value);
+      if (regNo) {
+        setData((prevData) => ({ ...prevData, email: value, regNo, isVITStudent: true }));
+      } else {
+        setData((prevData) => ({ ...prevData, email: value, regNo: "", isVITStudent: false }));
+      }
+    } else {
+      setData((prevData) => ({ ...prevData, [name]: value }));
+    }
   };
 
   const onLogin = async (event) => {
@@ -47,13 +61,14 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
 
   const onSignup = async (event) => {
     event.preventDefault();
+
     try {
-      console.log('Data:', data);
       const additionalData = {
         name: data.name,
         phone: data.phone,
-        regNo: data.isVITStudent ? data.regNo : "",
+        regNo: data.regNo,
         isVITStudent: data.isVITStudent,
+        droid: 50
       };
 
       await registerUser(data.email, data.password, additionalData);
@@ -61,7 +76,6 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
       handleClose();
     } catch (error) {
       console.error("Error signing up", error);
-      // Check if user already exists
       if (error.code === "auth/email-already-in-use") {
         toast.error("User already exists. Please log in.");
       } else {
@@ -119,25 +133,31 @@ const Login_popup = ({ closePopup, initialSignIn }) => {
                   placeholder="Phone Number"
                   required
                 />
+
                 <div>
                   <input
                     type="checkbox"
                     checked={data.isVITStudent}
-                    onChange={onCheckboxChange}
+                    onChange={(e) =>
+                      setData((prevData) => ({
+                        ...prevData,
+                        isVITStudent: e.target.checked,
+                      }))
+                    }
                   />
                   <label className="text-black">Are you a VIT student?</label>
                 </div>
-                {data.isVITStudent && (
-                  <Components.Input
-                    name="regNo"
-                    onChange={onChangeHandler}
-                    value={data.regNo}
-                    type="text"
-                    placeholder="Registration Number"
-                    required={data.isVITStudent}
-                  />
-                )}
-                
+
+                <Components.Input
+                  name="regNo"
+                  onChange={onChangeHandler}
+                  value={data.regNo}
+                  type="text"
+                  placeholder="Registration Number"
+                  readOnly={data.email.endsWith("@vitbhopal.ac.in")}
+                  required
+                />
+
                 <Components.Anchor2 onClick={() => toggle(true)}>
                   Already Have An Account?
                 </Components.Anchor2>

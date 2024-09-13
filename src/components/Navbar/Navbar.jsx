@@ -48,7 +48,10 @@ const Navbar = () => {
     <nav className="fixed top-0 z-50 w-full py-3 px-12 border-b backdrop-blur-lg border-neutral-700/80 bg-[#254336]">
       <div className="relative mx-auto lg:text-sm">
         <div className="flex justify-between items-center">
-          <div className="flex flex-shrink-0 items-center cursor-pointer" onClick={homeButton}>
+          <div
+            className="flex flex-shrink-0 items-center cursor-pointer"
+            onClick={homeButton}
+          >
             <img className="mr-2 h-10 w-30" src={logo2} alt="Logo" />
             <span className="text-xl tracking-tight hover:text-[#3ab680]">
               ANDROID CLUB
@@ -81,13 +84,19 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="navbar-profile flex items-center space-x-4 max-lg:hidden">
-              <img 
-                src={user.profilePic || "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"} 
-                onClick={() => setProfilePopupVisible(true)} 
-                alt="Profile Icon" 
-                className="cursor-pointer w-8 h-8 rounded-full" 
+              <img
+                src={
+                  user.profilePic ||
+                  "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
+                }
+                onClick={() => setProfilePopupVisible(true)}
+                alt="Profile Icon"
+                className="cursor-pointer w-8 h-8 rounded-full"
               />
-              <button onClick={handleLogout} className="text-white px-4 py-2 rounded-md border border-white">
+              <button
+                onClick={handleLogout}
+                className="text-white px-4 py-2 rounded-md border border-white"
+              >
                 Logout
               </button>
             </div>
@@ -108,31 +117,41 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <div className="navbar-profile flex items-center space-x-4 my-5">
-              <img 
-                src={user.profilePic || "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"} 
-                onClick={() => setProfilePopupVisible(true)} 
-                alt="Profile Icon" 
-                className="cursor-pointer w-8 h-8 rounded-full" 
-              />
-              <button onClick={handleLogout} className="text-white px-4 py-2 rounded-md border border-white">
-                Logout
-              </button>
-            </div>
-            <div className="flex space-x-6">
-              <button
-                onClick={() => toggleLoginPopup(true)}
-                className="px-3 py-2 rounded-md border"
-              >
-                Sign In
-              </button>
-              <button
-                onClick={() => toggleLoginPopup(false)}
-                className="px-3 py-2 bg-gradient-to-r from-[#47856a] to-[#02562f] rounded-md"
-              >
-                Create an account
-              </button>
-            </div>
+
+            {!user ? (
+              <div className="flex space-x-6">
+                <button
+                  onClick={() => toggleLoginPopup(true)}
+                  className="px-3 py-2 rounded-md border"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={() => toggleLoginPopup(false)}
+                  className="px-3 py-2 bg-gradient-to-r from-[#47856a] to-[#02562f] rounded-md"
+                >
+                  Create an account
+                </button>
+              </div>
+            ) : (
+              <div className="navbar-profile flex items-center space-x-4 my-5">
+                <img
+                  src={
+                    user.profilePic ||
+                    "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
+                  }
+                  onClick={() => setProfilePopupVisible(true)}
+                  alt="Profile Icon"
+                  className="cursor-pointer w-8 h-8 rounded-full"
+                />
+                <button
+                  onClick={handleLogout}
+                  className="text-white px-4 py-2 rounded-md border border-white"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -143,7 +162,10 @@ const Navbar = () => {
         />
       )}
       {profilePopupVisible && user && (
-        <ProfilePopup user={user} closePopup={() => setProfilePopupVisible(false)} />
+        <ProfilePopup
+          user={user}
+          closePopup={() => setProfilePopupVisible(false)}
+        />
       )}
     </nav>
   );

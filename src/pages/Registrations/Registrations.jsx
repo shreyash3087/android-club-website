@@ -24,10 +24,36 @@ const Registrations = ({ eventsData }) => {
 
   const upcomingEvent = eventsData.find((event) => !event.completion);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+
+const extractRegNoFromEmail = (email) => {
+  const vitBhopalDomain = "@vitbhopal.ac.in";
+  if (email.endsWith(vitBhopalDomain)) {
+    const prefix = email.split("@")[0];
+    const regNo = prefix.split(".")[1]; 
+    return regNo || "";
+  }
+  return "";
+};
+
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: value,
+  }));
+
+  if (name === "email") {
+    const regNo = extractRegNoFromEmail(value);
+    if (regNo) {
+      setFormData((prevData) => ({
+        ...prevData,
+        regNo,
+      }));
+    }
+  }
+};
+
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -84,7 +110,7 @@ const Registrations = ({ eventsData }) => {
           <div className="md:w-[70%] w-full">
             <div className="h-auto overflow-hidden">
               <img
-                src="/Registrations.png"
+                src="/Registration.png"
                 alt="Registrations"
                 className="object-cover object-center min-h-96 h-full w-full"
               />
@@ -192,7 +218,6 @@ const Registrations = ({ eventsData }) => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    required
                     className="w-full p-2 mt-2 border border-gray-300 bg-white rounded-md"
                   />
                 </div>
@@ -258,6 +283,7 @@ const Registrations = ({ eventsData }) => {
                     />
                   </div>
                 )}
+
                 <div>
                   <label className="block text-gray-600 my-2">
                     Query (Attach G-Drive link if applicable)
@@ -270,11 +296,13 @@ const Registrations = ({ eventsData }) => {
                     className="w-full p-2 mt-2 border border-gray-300 bg-white rounded-md"
                   />
                 </div>
+
                 {errorMessage && (
                   <div className="text-red-500 text-sm my-2">
                     {errorMessage}
                   </div>
                 )}
+
                 <div className="flex gap-2 mt-10 justify-around">
                   <button
                     className="px-12 py-2 border-[#254336] hover:text-white hover:bg-[#254336] border-2 bg-white text-[#254336] rounded cursor-pointer"
